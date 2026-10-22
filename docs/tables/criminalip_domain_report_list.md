@@ -16,7 +16,7 @@ The `criminalip_domain_report_list` table returns one row per existing scan repo
 - This table is read-only and **never starts a new scan.** If no one has scanned a domain, it returns no rows.
 - Each API call returns up to 100 reports. **Use `limit`**, because popular domains have thousands of reports. The plugin fetches at most `max_search_results` records per query (100 by default), even if the `limit` is larger.
 - `score` casing varies in the API (`Safe` here, `safe` in the full report). Compare it case-insensitively.
-- `reg_dtime` has no timezone in the API and is assumed to be UTC.
+- `reg_dtime` has no timezone in the API. It was checked against live scans and is UTC.
 
 ## Examples
 

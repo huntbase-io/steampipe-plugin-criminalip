@@ -14,6 +14,8 @@ The `criminalip_asset_search` table is the bulk version of `criminalip_banner_se
 **Important Notes**
 - You must specify the `query` column in the `where` clause.
 - Each API call returns 100 records and costs credits. **Always use `limit`.** The plugin also never fetches more than the connection's `max_search_results` setting (100 records by default), even when the `limit` is larger. Raise that setting to pull more. At most 10,000 records are reachable per query.
+- Steampipe only passes the `limit` to the plugin when it can apply it directly. With `order by`, a `where` condition on a column other than `query`, or a join, the plugin cannot see the `limit` and fetches up to `max_search_results` records. Put filters such as country or port inside `query` instead (for example `query = 'product: OpenSSH country: KR port: 22'`): that is cheaper and lets the `limit` through.
+- `scan_dtime` is sent by the API in Korea Standard Time (UTC+9) without a timezone. The plugin converts it to UTC.
 - Unlike banner search, this endpoint does not report a total match count (its `count` is the page size), so this table has no `total_count` column. Use `criminalip_banner_search` or `criminalip_banner_stats` to get the total.
 - The query syntax and its pitfalls are the same as for `criminalip_banner_search`:
   - Filter values cannot contain spaces, and quoted values return 0 results.

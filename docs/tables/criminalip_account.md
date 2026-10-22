@@ -13,7 +13,7 @@ Use this table to check that the connection works and to see which account and p
 
 **Important Notes**
 - The API echoes the full API key in this response. The plugin drops it before building the row, so it is never returned, cached or logged.
-- Timestamps carry no timezone in the API and are read as UTC.
+- Timestamps carry no timezone in the API and are read as UTC. This could not be verified.
 
 ## Examples
 

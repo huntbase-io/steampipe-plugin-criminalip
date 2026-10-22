@@ -125,7 +125,7 @@ export CRIMINALIP_API_KEY=your_api_key
 - **Read-only.** No table starts a domain scan or changes anything. To scan a new domain, use the Criminal IP web site or API, then query `criminalip_domain_report_list` and `criminalip_domain_report`.
 - **IPv4 only.** IPv6 addresses are skipped without an API call and return no rows.
 - **One call at a time.** The API rejects concurrent calls with the same key, so the plugin sends at most one request at a time per API key (across all connections that share the key), and its default rate limiter (`criminalip_api`) paces calls at up to 2 per second. You can tune the pacing with a [`limiter`](https://steampipe.io/docs/guides/limiter) block. If another program uses the same key at the same time, the plugin retries the API's "unable to call api at the same time" error with backoff.
-- **Timestamps** from the API have no timezone; the plugin reads them as UTC.
+- **Timestamps** from the API have no timezone, and not all endpoints use the same one. The plugin returns every timestamp in UTC. Checked against live responses: banner and asset search `scan_dtime` is sent in Korea Standard Time (UTC+9) and converted; the IP tables, `criminalip_domain_report_list.reg_dtime` and `criminalip_domain_report.report_time` are sent in UTC. The remaining timestamps (account dates, exploit dates, domain quick `reg_dtime`, `criminalip_ip_malicious.hostname_time`) could not be verified and are read as UTC.
 - **Full IP reports** (`full_report`, default true) are complete but can be large: about 2.3 MB for 8.8.8.8. Set `full_report = false` for a faster report capped at 20 items per section.
 
 ## Example queries

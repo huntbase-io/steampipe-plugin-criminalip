@@ -16,7 +16,7 @@ The `criminalip_domain_report` table returns one row for a scan ID. The main sca
 - This table is read-only and **never starts a new scan.** Scans are asynchronous and cost credits, so start them in the Criminal IP console or API, then query the report here.
 - An unknown `scan_id` returns no rows.
 - `score` casing varies in the API (`safe` here, `Safe` in the report list). Compare it case-insensitively.
-- Timestamps have no timezone in the API and are assumed to be UTC.
+- Timestamps have no timezone in the API. `report_time` was checked against a live scan and is UTC; the others are read as UTC.
 
 ## Examples
 

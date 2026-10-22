@@ -97,7 +97,7 @@ func bannerRecordColumns() []*plugin.Column {
 		{Name: "hostname", Type: proto.ColumnType_STRING, Transform: str("Hostname"), Description: "The hostname (PTR record) of the IP address."},
 		{Name: "cloud_source", Type: proto.ColumnType_STRING, Transform: str("CloudSource"), Description: "The cloud provider hosting the IP address, if any."},
 		{Name: "has_cve", Type: proto.ColumnType_BOOL, Transform: transform.FromField("HasCVE").Transform(flexBoolValue), Description: "True if Criminal IP associates known CVEs with this service. CVE IDs are not included; use criminalip_ip_vulnerability to get them."},
-		{Name: "scan_dtime", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ScanDtime").Transform(naiveTimeToTimestamp), Description: "When the banner was collected (API time without a timezone, assumed UTC)."},
+		{Name: "scan_dtime", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ScanDtime").Transform(kstTimeToTimestamp), Description: "When the banner was collected. The API sends this in Korea Standard Time (UTC+9) without a timezone; the plugin converts it to UTC."},
 		{Name: "jarm", Type: proto.ColumnType_STRING, Transform: str("Jarm"), Description: "The JARM TLS fingerprint."},
 		{Name: "ssl_expired", Type: proto.ColumnType_BOOL, Transform: transform.FromField("SSLExpired").Transform(flexBoolValue), Description: "True if the TLS certificate has expired. Null for non-TLS services."},
 		{Name: "ssl_issuer_organization", Type: proto.ColumnType_STRING, Transform: str("SSLIssuerOrganization"), Description: "The organization of the TLS certificate issuer."},

@@ -176,32 +176,42 @@ func normalizeIPv4(s string) (string, error) {
 
 //// TRANSFORMS
 
-// naiveTimeToTimestamp converts a timezone-less API timestamp string to a
-// UTC time. Empty or unparsable values become null.
+// naiveTimeToTimestamp converts a timezone-less API timestamp string that is
+// in UTC to a time. Empty or unparsable values become null.
 func naiveTimeToTimestamp(_ context.Context, d *transform.TransformData) (interface{}, error) {
+	return naiveTimeIn(d.Value, time.UTC), nil
+}
+
+// kstTimeToTimestamp converts a timezone-less API timestamp string that is in
+// Korea Standard Time (UTC+9) to a UTC time. Banner and asset search use KST.
+func kstTimeToTimestamp(_ context.Context, d *transform.TransformData) (interface{}, error) {
+	return naiveTimeIn(d.Value, apiclient.KST), nil
+}
+
+func naiveTimeIn(value any, loc *time.Location) any {
 	var s string
-	switch v := d.Value.(type) {
+	switch v := value.(type) {
 	case nil:
-		return nil, nil
+		return nil
 	case string:
 		s = v
 	case *string:
 		if v == nil {
-			return nil, nil
+			return nil
 		}
 		s = *v
 	case apiclient.FlexString:
 		s = string(v)
 	case time.Time:
-		return v, nil
+		return v
 	default:
 		s = fmt.Sprint(v)
 	}
-	t, ok := apiclient.ParseTime(s)
+	t, ok := apiclient.ParseTimeIn(s, loc)
 	if !ok {
-		return nil, nil
+		return nil
 	}
-	return t, nil
+	return t
 }
 
 // flexBoolValue converts an apiclient.FlexBool to *bool (null when invalid).

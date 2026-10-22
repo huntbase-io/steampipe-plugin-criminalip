@@ -90,7 +90,7 @@ func tableCriminalIPDomainReport(_ context.Context) *plugin.Table {
 			{Name: "score_num", Type: proto.ColumnType_DOUBLE, Transform: transform.FromField("MainDomainInfo.DomainScore.ScoreNum"), Description: "The numeric domain score."},
 			{Name: "score_percentage", Type: proto.ColumnType_DOUBLE, Transform: transform.FromField("MainDomainInfo.DomainScore.ScorePercentage"), Description: "The domain score as a percentage."},
 			{Name: "ssl", Type: proto.ColumnType_BOOL, Transform: transform.FromField("SSL").Transform(flexBoolValue), Description: "True if the site was served over valid TLS."},
-			{Name: "report_time", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ReportTime").Transform(naiveTimeToTimestamp), Description: "When the report was generated (API time without a timezone, assumed UTC)."},
+			{Name: "report_time", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ReportTime").Transform(naiveTimeToTimestamp), Description: "When the report was generated. The API sends UTC without a timezone (verified live)."},
 			js("main_domain_info", "MainDomainInfoRaw", "The main_domain_info section, including real_ip and favicon."),
 			js("summary", "Summary", "About 40 phishing and abuse heuristics, for example url_phishing_prob, dga_score, fake_domain, punycode and abuse_record."),
 			js("classification", "Classification", "The domain classification: dga_score, domain_type and google_safe_browsing."),

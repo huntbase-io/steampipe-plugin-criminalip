@@ -169,7 +169,10 @@ func TestBannerSearchValues(t *testing.T) {
 	wantValue(t, vals, "org_name", nil)    // "" in the API
 	wantValue(t, vals, "has_cve", false)
 	wantValue(t, vals, "latitude", 37.5658)
-	wantValue(t, vals, "scan_dtime", time.Date(2026, 10, 22, 7, 20, 4, 0, time.UTC))
+	// "2026-10-22 07:20:04" in KST. The same scan batch appears in the IP
+	// report (UTC) of the neighbouring 34.22.91.145 as confirmed_time
+	// "2026-10-21 22:20:04".
+	wantValue(t, vals, "scan_dtime", time.Date(2026, 10, 21, 22, 20, 4, 0, time.UTC))
 	if sw, ok := vals["software"].([]apiclient.Product); !ok || len(sw) != 1 || sw[0].Product != "OpenSSH" {
 		t.Errorf("software = %#v", vals["software"])
 	}

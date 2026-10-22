@@ -126,16 +126,32 @@ var timeLayouts = []string{
 	time.RFC3339,
 }
 
+// KST is Korea Standard Time (UTC+9, no daylight saving). Some Criminal IP
+// endpoints send naive timestamps in KST rather than UTC.
+var KST = time.FixedZone("KST", 9*60*60)
+
 // ParseTime parses a timezone-less API timestamp ("YYYY-MM-DD HH:MM:SS" or
 // "YYYY-MM-DD") as UTC. It returns ok=false for empty or unparsable input.
-// Note: /v1/domain/reports/personal appears to use KST (UTC+9), not UTC.
+//
+// Verified against live responses: the IP endpoints' timestamp and
+// confirmed_time, /v1/domain/reports reg_dtime and the domain report's
+// report_time are UTC. Banner and asset search scan_dtime (and the search
+// endpoints' top-level timestamp) are KST; use ParseTimeIn(s, KST) for those.
+// /v1/domain/reports/personal reg_dtime is also KST.
 func ParseTime(s string) (time.Time, bool) {
+	return ParseTimeIn(s, time.UTC)
+}
+
+// ParseTimeIn parses a timezone-less API timestamp as a time in loc and
+// returns it in UTC. Timestamps that carry their own zone (RFC 1123, RFC 3339)
+// keep it.
+func ParseTimeIn(s string, loc *time.Location) (time.Time, bool) {
 	s = strings.TrimSpace(s)
 	if s == "" {
 		return time.Time{}, false
 	}
 	for _, layout := range timeLayouts {
-		if t, err := time.ParseInLocation(layout, s, time.UTC); err == nil {
+		if t, err := time.ParseInLocation(layout, s, loc); err == nil {
 			return t.UTC(), true
 		}
 	}

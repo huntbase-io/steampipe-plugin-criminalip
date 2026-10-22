@@ -57,6 +57,22 @@ func TestParseTime(t *testing.T) {
 	}
 }
 
+// Banner search scan_dtime is KST: the live record for 8.8.8.8:443 had
+// scan_dtime "2026-10-20 15:45:33" and an HTTP banner sent at about
+// 06:40-06:45 GMT the same day.
+func TestParseTimeInKST(t *testing.T) {
+	want := time.Date(2026, 10, 20, 6, 45, 33, 0, time.UTC)
+	got, ok := ParseTimeIn("2026-10-20 15:45:33", KST)
+	if !ok || !got.Equal(want) || got.Location() != time.UTC {
+		t.Fatalf("got %v %v, want %v", got, ok, want)
+	}
+	// A timestamp with its own zone ignores loc.
+	got, ok = ParseTimeIn("Wed, 13 May 2026 00:00:00 GMT", KST)
+	if !ok || got.Hour() != 0 {
+		t.Fatalf("rfc1123 in KST: %v %v", got, ok)
+	}
+}
+
 func TestSearchEnvelopeDecodesFixture(t *testing.T) {
 	var env Envelope[SearchData[map[string]any]]
 	if err := json.Unmarshal(fixture(t, "v2_banner_search_openssh_kr.json"), &env); err != nil {

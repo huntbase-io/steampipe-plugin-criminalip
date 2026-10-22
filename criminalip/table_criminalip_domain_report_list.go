@@ -51,7 +51,7 @@ func tableCriminalIPDomainReportList(_ context.Context) *plugin.Table {
 			{Name: "scan_id", Type: proto.ColumnType_INT, Transform: transform.FromField("ScanID").Transform(flexStringToInt), Description: "The scan ID. Use it with criminalip_domain_report to get the full report."},
 			{Name: "url", Type: proto.ColumnType_STRING, Transform: str("URL"), Description: "The URL that was scanned."},
 			{Name: "title", Type: proto.ColumnType_STRING, Transform: str("Title"), Description: "The page title at scan time."},
-			{Name: "reg_dtime", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("RegDtime").Transform(naiveTimeToTimestamp), Description: "When the scan ran (API time without a timezone, assumed UTC)."},
+			{Name: "reg_dtime", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("RegDtime").Transform(naiveTimeToTimestamp), Description: "When the scan ran. The API sends UTC without a timezone (verified live)."},
 			{Name: "score", Type: proto.ColumnType_STRING, Transform: str("Score"), Description: "The domain risk score: Safe, Low, Moderate, Dangerous or Critical. The API's casing varies, so compare case-insensitively."},
 			{Name: "connected_ip_cnt", Type: proto.ColumnType_INT, Transform: transform.FromField("ConnectedIPCnt").Transform(flexStringToInt), Description: "The number of IP addresses the page connected to."},
 			{Name: "jarm", Type: proto.ColumnType_STRING, Transform: str("Jarm"), Description: "The JARM TLS fingerprint of the server."},

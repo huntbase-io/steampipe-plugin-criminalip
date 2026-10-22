@@ -41,7 +41,7 @@ func tableCriminalIPIPPort(_ context.Context) *plugin.Table {
 			{Name: "protocol", Type: proto.ColumnType_STRING, Transform: transform.FromField("Protocol").Transform(emptyStringToNil), Description: "Application protocol, for example HTTP, HTTPS, SSH or DNS."},
 			{Name: "port_status", Type: proto.ColumnType_STRING, Description: "Port status, for example open."},
 			{Name: "is_vulnerability", Type: proto.ColumnType_BOOL, Description: "True if the service on this port has known vulnerabilities."},
-			{Name: "confirmed_time", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ConfirmedTime").Transform(naiveTimeToTimestamp), Description: "When the port was last confirmed open (assumed UTC)."},
+			{Name: "confirmed_time", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("ConfirmedTime").Transform(naiveTimeToTimestamp), Description: "When the port was last confirmed open (UTC)."},
 			{Name: "software", Type: proto.ColumnType_JSON, Description: "Detected software as [{product, version}]."},
 			{Name: "operating_systems", Type: proto.ColumnType_JSON, Description: "Detected operating systems as [{product, version}]."},
 			{Name: "technologies", Type: proto.ColumnType_JSON, Description: "Detected web technologies as [{tech_name, tech_version, tech_logo_url}]."},

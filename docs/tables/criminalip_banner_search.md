@@ -14,6 +14,8 @@ The `criminalip_banner_search` table returns one row per IP address and port tha
 **Important Notes**
 - You must specify the `query` column in the `where` clause.
 - Each API call returns 10 records and costs credits. The table stops paging as soon as Steampipe has the rows it needs, so **always use `limit`**. The plugin also never fetches more than the connection's `max_search_results` setting (100 records by default), even when the `limit` is larger. Raise that setting to pull more. At most 10,000 records are reachable per query.
+- Steampipe only passes the `limit` to the plugin when it can apply it directly. With `order by`, a `where` condition on a column other than `query`, or a join, the plugin cannot see the `limit` and fetches up to `max_search_results` records. Put filters such as country or port inside `query` instead (for example `query = 'product: OpenSSH country: KR port: 22'`): that is cheaper and lets the `limit` through.
+- `scan_dtime` is sent by the API in Korea Standard Time (UTC+9) without a timezone. The plugin converts it to UTC.
 - `total_count` is the total number of matches, which can be far larger than the rows returned.
 - Query syntax:
   - Filters are `name: value`, and terms are ANDed. `OR` splits the query into AND-groups (lowest precedence), and `NOT` negates a term. Keywords must come before filters.
