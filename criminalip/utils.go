@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"reflect"
 	"strings"
 	"time"
 
@@ -221,6 +222,11 @@ func emptyStringToNil(_ context.Context, d *transform.TransformData) (interface{
 		if v == "" {
 			return nil, nil
 		}
+	case *string:
+		if v == nil || *v == "" {
+			return nil, nil
+		}
+		return *v, nil
 	case apiclient.FlexString:
 		if v == "" {
 			return nil, nil
@@ -228,4 +234,17 @@ func emptyStringToNil(_ context.Context, d *transform.TransformData) (interface{
 		return string(v), nil
 	}
 	return d.Value, nil
+}
+
+// lengthOf returns the length of a slice, array or map value (0 for nil).
+func lengthOf(_ context.Context, d *transform.TransformData) (interface{}, error) {
+	if d.Value == nil {
+		return 0, nil
+	}
+	v := reflect.ValueOf(d.Value)
+	switch v.Kind() {
+	case reflect.Slice, reflect.Array, reflect.Map, reflect.String:
+		return v.Len(), nil
+	}
+	return nil, nil
 }

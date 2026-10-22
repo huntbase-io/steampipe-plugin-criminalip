@@ -33,7 +33,17 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			},
 		},
 		TableMap: map[string]*plugin.Table{
-			"criminalip_account": tableCriminalIPAccount(ctx),
+			"criminalip_account":           tableCriminalIPAccount(ctx),
+			"criminalip_dns_server_safety": tableCriminalIPDNSServerSafety(ctx),
+			"criminalip_ip":                tableCriminalIPIP(ctx),
+			"criminalip_ip_hosting":        tableCriminalIPIPHosting(ctx),
+			"criminalip_ip_malicious":      tableCriminalIPIPMalicious(ctx),
+			"criminalip_ip_port":           tableCriminalIPIPPort(ctx),
+			"criminalip_ip_privacy_threat": tableCriminalIPIPPrivacyThreat(ctx),
+			"criminalip_ip_report":         tableCriminalIPIPReport(ctx),
+			"criminalip_ip_suspicious":     tableCriminalIPIPSuspicious(ctx),
+			"criminalip_ip_vpn":            tableCriminalIPIPVPN(ctx),
+			"criminalip_ip_vulnerability":  tableCriminalIPIPVulnerability(ctx),
 		},
 	}
 	return p
