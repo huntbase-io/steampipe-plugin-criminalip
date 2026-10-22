@@ -14,6 +14,8 @@ Install the plugin with [Steampipe](https://steampipe.io):
 steampipe plugin install huntbase-io/criminalip
 ```
 
+> Until the plugin is published to the Steampipe Hub, build it from source instead: see [Developing](#developing).
+
 Configure your API key in `~/.steampipe/config/criminalip.spc`, or set it in the environment:
 
 ```shell
@@ -79,7 +81,7 @@ git clone https://github.com/huntbase-io/steampipe-plugin-criminalip.git
 cd steampipe-plugin-criminalip
 ```
 
-Build and install as a local plugin (`~/.steampipe/plugins/local/criminalip/criminalip.plugin`):
+Build and install as a local plugin (`~/.steampipe/plugins/local/criminalip/criminalip.plugin`). If you use a non-default Steampipe install directory, export `STEAMPIPE_INSTALL_DIR` first; `make install` and the config path below then use it instead of `~/.steampipe`:
 
 ```sh
 make install
