@@ -104,8 +104,11 @@ type exhaustedError struct{ err error }
 func (e *exhaustedError) Error() string { return e.err.Error() }
 func (e *exhaustedError) Unwrap() error { return e.err }
 
-// retryConfig is the plugin-wide retry policy: HTTP 429, HTTP 5xx and network
-// timeouts, with Fibonacci backoff and at most 3 attempts.
+// retryConfig is the plugin-wide retry policy: the per-key concurrency error,
+// HTTP 429, HTTP 5xx and network timeouts. The SDK treats MaxAttempts as the
+// number of retries, so a call is tried at most 4 times, after waits of
+// 0.5 s, 1 s and 1.5 s (Fibonacci). Requests are serialised per key by the
+// client, so retries never run in parallel.
 func retryConfig() *plugin.RetryConfig {
 	return &plugin.RetryConfig{
 		ShouldRetryErrorFunc: shouldRetryError,
