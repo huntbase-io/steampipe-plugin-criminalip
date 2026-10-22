@@ -22,14 +22,16 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 		DefaultGetConfig: &plugin.GetConfig{
 			IgnoreConfig: &plugin.IgnoreConfig{ShouldIgnoreErrorFunc: isNotFoundError},
 		},
-		// Criminal IP publishes no rate-limit headers; stay polite by default.
+		// Criminal IP publishes no rate-limit headers, and rejects concurrent
+		// calls with the same key ("unable to call api at the same time").
 		// Users can override this with a `limiter` block in their .spc file.
 		RateLimiters: []*rate_limiter.Definition{
 			{
-				Name:       "criminalip_api",
-				FillRate:   2,
-				BucketSize: 5,
-				Scope:      []string{"connection"},
+				Name:           "criminalip_api",
+				FillRate:       2,
+				BucketSize:     5,
+				MaxConcurrency: 1,
+				Scope:          []string{"connection"},
 			},
 		},
 		TableMap: map[string]*plugin.Table{

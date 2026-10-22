@@ -120,6 +120,7 @@ func TestBodyStatusErrors(t *testing.T) {
 		retryable  bool
 	}{
 		{"errors/missing_api_key.json", 200, 403, false, false, false},
+		{"errors/concurrency_limit_403.json", 200, 403, false, false, true},
 		{"errors/invalid_api_key.json", 200, 500, false, false, false},
 		{"errors/invalid_ip.json", 200, 400, false, true, false},
 		{"errors/ipv6_not_supported.json", 200, 400, false, true, false},

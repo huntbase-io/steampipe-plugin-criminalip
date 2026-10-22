@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"strings"
 )
 
 // ErrMissingAPIKey is returned by New when no API key is configured.
@@ -26,12 +27,14 @@ type APIError struct {
 
 func (e *APIError) Error() string {
 	msg := fmt.Sprintf("criminalip: %s %s: status %d: %s", e.Method, e.Path, e.Status, e.Message)
-	switch e.Status {
-	case http.StatusForbidden:
+	switch {
+	case IsConcurrencyLimit(e):
+		msg += " (another request with this API key was in flight; the API allows one call at a time per key)"
+	case e.Status == http.StatusForbidden:
 		msg += " (the API key is missing or not permitted to call this endpoint)"
-	case http.StatusInternalServerError:
+	case e.Status == http.StatusInternalServerError:
 		msg += " (Criminal IP also returns this for an invalid API key; check api_key)"
-	case 420:
+	case e.Status == 420:
 		msg += " (unexpected parameter)"
 	}
 	return msg
@@ -88,6 +91,9 @@ func IsRetryable(err error) bool {
 	}
 	var apiErr *APIError
 	if errors.As(err, &apiErr) {
+		if IsConcurrencyLimit(apiErr) {
+			return true
+		}
 		return apiErr.HTTPStatus == http.StatusTooManyRequests || apiErr.Status == http.StatusTooManyRequests ||
 			apiErr.HTTPStatus >= 500
 	}
@@ -105,4 +111,15 @@ func IsRetryable(err error) bool {
 		}
 	}
 	return false
+}
+
+// IsConcurrencyLimit reports whether err is the per-key concurrency limit:
+// HTTP 200 with body status 403 and "unable to call api at the same time".
+// Unlike other 403s this is transient and safe to retry.
+func IsConcurrencyLimit(err error) bool {
+	var apiErr *APIError
+	if !errors.As(err, &apiErr) {
+		return false
+	}
+	return apiErr.Status == http.StatusForbidden && strings.Contains(strings.ToLower(apiErr.Message), "same time")
 }

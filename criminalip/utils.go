@@ -58,12 +58,15 @@ func maxSearchResults(d *plugin.QueryData) int {
 }
 
 // searchRecordBudget returns how many records a paginated search may fetch:
-// the SQL LIMIT when Steampipe pushed one down, otherwise max_search_results.
+// min(SQL LIMIT, max_search_results).
 func searchRecordBudget(d *plugin.QueryData) int {
+	limit := maxSearchResults(d)
 	if d.QueryContext != nil && d.QueryContext.Limit != nil && *d.QueryContext.Limit > 0 {
-		return int(min(*d.QueryContext.Limit, int64(apiclient.MaxReachableRecords)))
+		// A LIMIT can lower the budget but never raise it above
+		// max_search_results: LIMIT 5000 would otherwise mean ~500 paid calls.
+		limit = int(min(*d.QueryContext.Limit, int64(limit)))
 	}
-	return maxSearchResults(d)
+	return limit
 }
 
 // streamSearch runs a paginated search with the plugin's guard rails: the
