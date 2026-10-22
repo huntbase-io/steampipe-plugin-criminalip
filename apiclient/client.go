@@ -35,13 +35,16 @@ package apiclient
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"mime"
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -71,6 +74,7 @@ type Client struct {
 	baseURL   string
 	userAgent string
 	http      *http.Client
+	slot      chan struct{} // shared per API key; see keySlot
 }
 
 // New returns a configured client.
@@ -91,9 +95,37 @@ func New(cfg Config) (*Client, error) {
 		c.userAgent = DefaultUserAgent
 	}
 	if c.http == nil {
-		c.http = &http.Client{Timeout: DefaultTimeout}
+		c.http = &http.Client{Timeout: DefaultTimeout, CheckRedirect: sameHostRedirect}
 	}
+	c.slot = keySlot(c.apiKey)
 	return c, nil
+}
+
+// sameHostRedirect refuses redirects to another host. net/http forwards custom
+// headers such as x-api-key on redirect (it only strips Authorization and
+// Cookie), so following an off-host redirect would leak the key.
+func sameHostRedirect(req *http.Request, via []*http.Request) error {
+	if len(via) >= 10 {
+		return errors.New("stopped after 10 redirects")
+	}
+	if len(via) > 0 && !strings.EqualFold(req.URL.Host, via[0].URL.Host) {
+		return http.ErrUseLastResponse
+	}
+	return nil
+}
+
+// keySlots holds one single-slot semaphore per API key (keyed by its SHA-256,
+// so the key itself is not retained as a map key). The API rejects concurrent
+// calls with the same key ("unable to call api at the same time"), so every
+// Client in the process that shares a key also shares one slot. Steampipe runs
+// list calls for `ip in (...)` and parallel queries concurrently, and its
+// rate limiter's max_concurrency does not cover list calls, so this is the
+// only place that can guarantee one request in flight per key.
+var keySlots sync.Map // map[[32]byte]chan struct{}
+
+func keySlot(apiKey string) chan struct{} {
+	slot, _ := keySlots.LoadOrStore(sha256.Sum256([]byte(apiKey)), make(chan struct{}, 1))
+	return slot.(chan struct{})
 }
 
 // Get performs a GET request and decodes a successful JSON body into out.
@@ -139,17 +171,32 @@ func (c *Client) do(ctx context.Context, method, path string, params url.Values,
 		req.Header.Set("Content-Type", contentType)
 	}
 
-	resp, err := c.http.Do(req)
+	// Wait for this key's request slot, and hold it until the body is read.
+	select {
+	case c.slot <- struct{}{}:
+	case <-ctx.Done():
+		return &TransportError{Method: method, Path: path, Err: ctx.Err()}
+	}
+	raw, resp, err := c.send(req)
+	<-c.slot
 	if err != nil {
+		if resp != nil {
+			return &TransportError{Method: method, Path: path, HTTPStatus: resp.StatusCode, Err: err}
+		}
 		return &TransportError{Method: method, Path: path, Err: err}
 	}
-	defer resp.Body.Close()
-
-	raw, err := io.ReadAll(io.LimitReader(resp.Body, maxBodyBytes))
-	if err != nil {
-		return &TransportError{Method: method, Path: path, HTTPStatus: resp.StatusCode, Err: err}
-	}
 	return decodeResponse(method, path, resp, raw, out)
+}
+
+// send performs the request and reads the (size-limited) body.
+func (c *Client) send(req *http.Request) ([]byte, *http.Response, error) {
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+	raw, err := io.ReadAll(io.LimitReader(resp.Body, maxBodyBytes))
+	return raw, resp, err
 }
 
 // decodeResponse applies the envelope rules to a raw HTTP response.

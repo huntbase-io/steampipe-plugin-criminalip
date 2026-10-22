@@ -9,7 +9,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"testing"
+	"time"
 )
 
 const testKey = "test-key-should-never-leak"
@@ -157,10 +160,11 @@ func TestCloudflareChallengeAndHTML(t *testing.T) {
 	html := []byte("<!DOCTYPE html><html><title>Just a moment...</title></html>")
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=UTF-8")
-		if r.URL.Path == "/challenge" {
+		switch r.URL.Path {
+		case "/challenge":
 			w.Header().Set("cf-mitigated", "challenge")
 			w.WriteHeader(403)
-		} else if r.URL.Path == "/html500" {
+		case "/html500":
 			w.WriteHeader(500)
 		}
 		_, _ = w.Write(html)
@@ -197,4 +201,129 @@ func TestNoDataIsNotAnError(t *testing.T) {
 	if !IsNoData(env.Message) || len(env.Data) != 0 {
 		t.Fatalf("expected empty no-data result, got %+v", env)
 	}
+}
+
+// The API allows one call in flight per key, and Steampipe runs list calls
+// for `ip in (...)` concurrently, so the client must serialise per key, across
+// clients (connections) that share the key.
+func TestRequestsAreSerialisedPerKey(t *testing.T) {
+	var inFlight, maxInFlight atomic.Int32
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		n := inFlight.Add(1)
+		for {
+			m := maxInFlight.Load()
+			if n <= m || maxInFlight.CompareAndSwap(m, n) {
+				break
+			}
+		}
+		time.Sleep(20 * time.Millisecond)
+		inFlight.Add(-1)
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"status":200}`))
+	}))
+	t.Cleanup(srv.Close)
+
+	key := "serialise-" + t.Name()
+	c1, _ := New(Config{APIKey: key, BaseURL: srv.URL})
+	c2, _ := New(Config{APIKey: key, BaseURL: srv.URL})
+	var wg sync.WaitGroup
+	for i := 0; i < 8; i++ {
+		c := c1
+		if i%2 == 1 {
+			c = c2
+		}
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if err := c.Get(context.Background(), "/x", nil, nil); err != nil {
+				t.Error(err)
+			}
+		}()
+	}
+	wg.Wait()
+	if got := maxInFlight.Load(); got != 1 {
+		t.Fatalf("max requests in flight for one key = %d, want 1", got)
+	}
+}
+
+func TestDifferentKeysAreNotSerialised(t *testing.T) {
+	release := make(chan struct{})
+	started := make(chan struct{}, 2)
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		started <- struct{}{}
+		<-release
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"status":200}`))
+	}))
+	t.Cleanup(srv.Close)
+	a, _ := New(Config{APIKey: "key-a-" + t.Name(), BaseURL: srv.URL})
+	b, _ := New(Config{APIKey: "key-b-" + t.Name(), BaseURL: srv.URL})
+	var wg sync.WaitGroup
+	for _, c := range []*Client{a, b} {
+		wg.Add(1)
+		go func() { defer wg.Done(); _ = c.Get(context.Background(), "/x", nil, nil) }()
+	}
+	for i := 0; i < 2; i++ {
+		select {
+		case <-started:
+		case <-time.After(2 * time.Second):
+			close(release)
+			t.Fatal("requests with different keys were serialised")
+		}
+	}
+	close(release)
+	wg.Wait()
+}
+
+func TestWaitingForSlotHonoursContext(t *testing.T) {
+	key := "ctx-" + t.Name()
+	c, _ := New(Config{APIKey: key, BaseURL: "http://127.0.0.1:1"})
+	c.slot <- struct{}{} // another request holds the slot
+	defer func() { <-c.slot }()
+	ctx, cancel := context.WithTimeout(context.Background(), 50*time.Millisecond)
+	defer cancel()
+	err := c.Get(ctx, "/x", nil, nil)
+	if !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("want deadline exceeded, got %v", err)
+	}
+}
+
+// net/http forwards custom headers such as x-api-key on redirects, so an
+// off-host redirect must not be followed.
+func TestOffHostRedirectIsNotFollowed(t *testing.T) {
+	var leaked atomic.Bool
+	other := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("x-api-key") != "" {
+			leaked.Store(true)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"status":200}`))
+	}))
+	t.Cleanup(other.Close)
+	// Use "localhost" for the redirect target so the host differs from 127.0.0.1.
+	target := strings.Replace(other.URL, "127.0.0.1", "localhost", 1)
+	c := serveHandler(t, func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, target+"/elsewhere", http.StatusFound)
+	})
+	err := c.Get(context.Background(), "/v1/asset/ip/summary", nil, nil)
+	if err == nil {
+		t.Fatal("want an error for an off-host redirect")
+	}
+	if leaked.Load() {
+		t.Fatal("x-api-key was sent to the redirect target")
+	}
+	if strings.Contains(err.Error(), testKey) {
+		t.Fatal("error leaks the key")
+	}
+}
+
+func serveHandler(t *testing.T, h http.HandlerFunc) *Client {
+	t.Helper()
+	srv := httptest.NewServer(h)
+	t.Cleanup(srv.Close)
+	c, err := New(Config{APIKey: testKey, BaseURL: srv.URL})
+	if err != nil {
+		t.Fatal(err)
+	}
+	return c
 }

@@ -24,7 +24,10 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 		},
 		// Criminal IP publishes no rate-limit headers, and rejects concurrent
 		// calls with the same key ("unable to call api at the same time").
-		// Users can override this with a `limiter` block in their .spc file.
+		// The API client itself allows only one request in flight per key
+		// (Steampipe's max_concurrency does not cover list calls, which run
+		// concurrently for `ip in (...)`); this limiter paces calls at 2/s.
+		// Users can override it with a `limiter` block in their .spc file.
 		RateLimiters: []*rate_limiter.Definition{
 			{
 				Name:           "criminalip_api",

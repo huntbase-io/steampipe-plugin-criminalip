@@ -124,7 +124,7 @@ export CRIMINALIP_API_KEY=your_api_key
 - **Searches are bounded.** Search tables stop at the SQL `limit`, at `max_search_results` (100 by default), or at the end of the results, whichever comes first.
 - **Read-only.** No table starts a domain scan or changes anything. To scan a new domain, use the Criminal IP web site or API, then query `criminalip_domain_report_list` and `criminalip_domain_report`.
 - **IPv4 only.** IPv6 addresses are skipped without an API call and return no rows.
-- **One call at a time.** The API rejects concurrent calls with the same key, so the plugin's default rate limiter (`criminalip_api`) allows one request at a time, at up to 2 per second. You can override it with a [`limiter`](https://steampipe.io/docs/guides/limiter) block.
+- **One call at a time.** The API rejects concurrent calls with the same key, so the plugin sends at most one request at a time per API key (across all connections that share the key), and its default rate limiter (`criminalip_api`) paces calls at up to 2 per second. You can tune the pacing with a [`limiter`](https://steampipe.io/docs/guides/limiter) block. If another program uses the same key at the same time, the plugin retries the API's "unable to call api at the same time" error with backoff.
 - **Timestamps** from the API have no timezone; the plugin reads them as UTC.
 - **Full IP reports** (`full_report`, default true) are complete but can be large: about 2.3 MB for 8.8.8.8. Set `full_report = false` for a faster report capped at 20 items per section.
 
