@@ -217,21 +217,21 @@ type ipReportResult struct {
 	Report *ipReport
 }
 
-// fullQual returns the effective `full` value: true unless `full = false`.
+// fullQual returns the effective `full` value: true unless `full_report = false`.
 func fullQual(d *plugin.QueryData) bool {
-	if q := d.EqualsQuals["full"]; q != nil {
+	if q := d.EqualsQuals["full_report"]; q != nil {
 		return q.GetBoolValue()
 	}
 	return true
 }
 
 func ipReportKeyColumns() plugin.KeyColumnSlice {
-	return append(ipKeyColumns(), &plugin.KeyColumn{Name: "full", Require: plugin.Optional, Operators: []string{"="}})
+	return append(ipKeyColumns(), &plugin.KeyColumn{Name: "full_report", Require: plugin.Optional, Operators: []string{"="}})
 }
 
 func fullColumn() *plugin.Column {
-	return &plugin.Column{Name: "full", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Full"),
-		Description: "Whether the complete report was requested (default true). Set full = false for a faster report with every section capped at 20 items."}
+	return &plugin.Column{Name: "full_report", Type: proto.ColumnType_BOOL, Transform: transform.FromField("Full"),
+		Description: "Whether the complete report was requested (default true). Set full_report = false for a faster report with every section capped at 20 items."}
 }
 
 func ipReportCacheKey(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
@@ -245,6 +245,7 @@ func getIPReportUncached(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, nil
 	}
 	full := fullQual(d)
+	plugin.Logger(ctx).Debug("criminalip.getIPReport", "api_call", "/v2/asset/ip/report", "ip", ip, "full", full)
 	var report ipReport
 	if err := getIP(ctx, d, "/v2/asset/ip/report", ip, url.Values{"full": {strconv.FormatBool(full)}}, &report); err != nil {
 		return nil, err
