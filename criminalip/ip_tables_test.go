@@ -84,6 +84,14 @@ func TestIPTableSummary(t *testing.T) {
 	wantValue(t, vals, "country_code", "DE")
 	wantValue(t, vals, "as_no", int64(60729))
 
+	// 8.8.8.8 has region, city and postal_code null in the API: they must be
+	// SQL null, not empty strings.
+	vals = rowValues(t, table, nil, decodeIPFixture[ipSummary](t, "v1_asset_ip_summary_8.8.8.8.json"))
+	wantValue(t, vals, "region", nil)
+	wantValue(t, vals, "city", nil)
+	wantValue(t, vals, "postal_code", nil)
+	wantValue(t, vals, "country", "United States")
+
 	rs := decodeIPFixture[ipReportSummary](t, "v1_asset_ip_report_summary_185.220.101.1.json")
 	vals = rowValues(t, table, getIPReportSummary, rs)
 	wantValue(t, vals, "is_malicious", true)
