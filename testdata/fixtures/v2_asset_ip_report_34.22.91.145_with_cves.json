@@ -1,0 +1,462 @@
+{
+  "ip": "34.22.91.145",
+  "timestamp": "2026-10-22 21:33:56",
+  "issues": {
+    "is_vpn": false,
+    "is_cloud": true,
+    "is_tor": false,
+    "is_proxy": false,
+    "is_hosting": true,
+    "is_mobile": false,
+    "is_darkweb": false,
+    "is_scanner": false,
+    "is_snort": false,
+    "is_anonymous_vpn": false
+  },
+  "score": {
+    "inbound": "Critical",
+    "outbound": "Moderate"
+  },
+  "user_search_count": 0,
+  "protected_ip": {
+    "count": 0,
+    "data": []
+  },
+  "domain": {
+    "count": 0,
+    "data": []
+  },
+  "whois": {
+    "count": 1,
+    "data": [
+      {
+        "as_name": "Google LLC",
+        "as_no": 396982,
+        "city": "Seoul",
+        "region": "Seoul",
+        "org_name": "Google Cloud",
+        "postal_code": "04524",
+        "latitude": 37.5658,
+        "longitude": 126.978,
+        "org_country_code": "kr",
+        "confirmed_time": "2026-10-22 00:00:00"
+      }
+    ]
+  },
+  "hostname": {
+    "count": 1,
+    "data": [
+      {
+        "domain_name_rep": "googleusercontent.com",
+        "domain_name_full": "145.91.22.34.bc.googleusercontent.com",
+        "confirmed_time": "2026-09-23 23:03:27"
+      }
+    ]
+  },
+  "ids": {
+    "count": 0,
+    "data": []
+  },
+  "vpn": {
+    "count": 0,
+    "data": []
+  },
+  "anonymous_vpn": {
+    "count": 0,
+    "data": []
+  },
+  "webcam": {
+    "count": 0,
+    "data": []
+  },
+  "honeypot": {
+    "count": 0,
+    "data": []
+  },
+  "ip_category": {
+    "count": 1,
+    "data": [
+      {
+        "detect_source": "Google",
+        "type": "cloud service",
+        "detect_info": {},
+        "confirmed_time": "2026-10-22 19:09:13"
+      }
+    ]
+  },
+  "port": {
+    "count": 20,
+    "data": [
+      {
+        "banner": "HTTP/1.1\nStatus: 200 OK\nDate: Mon, 19 Oct 2026 03:25:40 GMT\nCache Control: no-store, no-cache, must-revalidate\nContent Type: text/html; charset=UTF-8\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nServer: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\nSet Cookie: PHPSESSID=ja5lu3iunc0fd8s2uq33ts6j2q; path=/\nX Powered By: PHP/7.3.33\n\n<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n\t<meta name=\"description\" content=\"Creating Value 타키온뉴스,공시,특허,바이오,법률,심층,tmr,...[truncated 6238 chars]",
+        "open_port_no": 80,
+        "port_status": "open",
+        "protocol": "HTTP",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": null,
+        "sdn_common_name": null,
+        "jarm_hash": null,
+        "ssl_info_raw": null,
+        "technologies": [
+          {
+            "tech_name": "Apache",
+            "tech_version": "2.4.6",
+            "tech_logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/Apache.svg"
+          },
+          {
+            "tech_name": "PHP",
+            "tech_version": "7.3.33",
+            "tech_logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/PHP.svg"
+          },
+          {
+            "tech_name": "jQuery",
+            "tech_version": "3.7.1",
+            "tech_logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/jQuery.svg"
+          }
+        ],
+        "is_vulnerability": true,
+        "confirmed_time": "2026-10-22 12:51:41",
+        "software": [
+          {
+            "product": "Apache",
+            "version": "2.4.6"
+          },
+          {
+            "product": "OpenSSL",
+            "version": "1.0.2k-fips"
+          },
+          {
+            "product": "PHP",
+            "version": "7.3.33"
+          }
+        ],
+        "operating_systems": [
+          {
+            "product": "CentOS Linux",
+            "version": ""
+          }
+        ]
+      },
+      {
+        "banner": "HTTP/1.1\nStatus: 200 OK\nCache Control: no-store, no-cache, must-revalidate\nContent Type: text/html; charset=UTF-8\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nServer: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\nSet Cookie: PHPSESSID=c87p3al91snp7uqr73bpj3h6ha; path=/\nX Powered By: PHP/7.3.33\n\n<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n\t<meta name=\"description\" content=\"Creating Value 타키온뉴스,공시,특허,바이오,법률,심층,tmr,tdr\">\n\t<meta property=\"og:type\" cont...[truncated 8599 chars]",
+        "open_port_no": 443,
+        "port_status": "open",
+        "protocol": "HTTPS",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": "*.tachyonnews.com, tachyonnews.com",
+        "sdn_common_name": "*.tachyonnews.com",
+        "jarm_hash": "05d02d20d21d20d05c05d02d05d20d74fcf6501ae7a92319e575bfafd2a827",
+        "ssl_info_raw": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 94438811667511915742281386870894110721\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: Sectigo RSA Domain Validation Secure Server CA\n\tCountry: GB\n\tLocality: Salford\n\tOrganization: Sectigo Limited\n\tProvince: Greater Manchester\nIssuer Dn: C=GB, ST=Greater Manchester, L=Salford, O=Sectigo Limited, CN=Sectigo RSA Domain Validation Secure Server CA\nValidity:\n\tEnd: 2024-11-04T23:59:59Z\n\tLength: 3.1708799e+07\n\tStart: 2023-11-04T00:00:00Z\nSubject:\n\tCommon Name: *.tachyonnews.com\nSubject Dn: CN=*.tachyonnews.com\nSubje...[truncated 2402 chars]",
+        "technologies": [],
+        "is_vulnerability": true,
+        "confirmed_time": "2026-10-22 09:07:15",
+        "software": [
+          {
+            "product": "Apache",
+            "version": "2.4.6"
+          },
+          {
+            "product": "OpenSSL",
+            "version": "1.0.2k-fips"
+          },
+          {
+            "product": "PHP",
+            "version": "7.3.33"
+          }
+        ],
+        "operating_systems": [
+          {
+            "product": "CentOS Linux",
+            "version": ""
+          }
+        ]
+      },
+      {
+        "banner": "SSH-2.0-OpenSSH_7.4\nKey: AAAAC3NzaC1lZDI1NTE5AAAAIGvhXrpkeecvL9voPFcty8mSyiWcuK0clklU8pOhBvVT\nAlgorithm: ssh-ed25519\nFingerprint: 4d7a7043f79635a31936e5b56848fd679ef37eac47e70edee7f2f9cda4e40a03\n\nKex Algorithms:\n\tcurve25519-sha256\n\tcurve25519-sha256@libssh.org\n\tecdh-sha2-nistp256\n\tecdh-sha2-nistp384\n\tecdh-sha2-nistp521\n\tdiffie-hellman-group-exchange-sha256\n\tdiffie-hellman-group16-sha512\n\tdiffie-hellman-group18-sha512\n\tdiffie-hellman-group-exchange-sha1\n\tdiffie-hellman-group14-sha256\n\tdiffie-hellman-group14-sha1\n\tdiffie-hellman-group1-sha1\n\nServer Host Key Algorithms:\n\tssh-rsa\n\trsa-sha2-512\n\trs...[truncated 546 chars]",
+        "open_port_no": 22,
+        "port_status": "open",
+        "protocol": "SSH",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": null,
+        "sdn_common_name": null,
+        "jarm_hash": null,
+        "ssl_info_raw": null,
+        "technologies": [],
+        "is_vulnerability": true,
+        "confirmed_time": "2026-10-21 22:20:04",
+        "software": [
+          {
+            "product": "OpenSSH",
+            "version": "7.4"
+          }
+        ],
+        "operating_systems": []
+      }
+    ]
+  },
+  "vulnerability": {
+    "count": 20,
+    "data": [
+      {
+        "cve_id": "CVE-2026-93546",
+        "cve_description": "Integer overflow in mod_dav_fs in Apache HTTP Server through 2.4.68 allows an authenticated WebDAV client with write access to crash worker processes and persistently corrupt a directory's property database via PROPPATCH requests declaring many XML namespaces.",
+        "cvssv2_vector": "",
+        "cvssv2_score": 0.0,
+        "cvssv3_vector": "NETWORK",
+        "cvssv3_score": 8.8,
+        "list_cpe": [
+          "cpe:2.3:a:apache:http_server:1.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:0.8.11:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:1.1:*:*:*:*:*:*:*"
+        ],
+        "list_cwe": [
+          {
+            "cve_id": "CVE-2026-93546",
+            "cwe_id": 190,
+            "cwe_name": "Integer Overflow or Wraparound",
+            "cwe_description": "The product performs a calculation that can\n         produce an integer overflow or wraparound when the logic\n         assumes that the resulting value will always be larger than\n         the original value. This occurs when an integer value is\n         incremented to a value that is too large to store in the\n         associated representation. When this occurs, the value may\n         become a very small or negative number."
+          }
+        ],
+        "list_edb": [],
+        "app_name": "Apache",
+        "app_version": "2.4.6",
+        "open_port_no_list": {
+          "TCP": [
+            80,
+            443
+          ],
+          "UDP": []
+        },
+        "have_more_ports": false,
+        "open_port_no": [
+          {
+            "port": 80,
+            "socket": "tcp"
+          },
+          {
+            "port": 443,
+            "socket": "tcp"
+          }
+        ],
+        "list_child": [
+          {
+            "app_name": "http_server",
+            "app_version": "0.8.11",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "0.8.14",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "1.0",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          }
+        ],
+        "vendor": "apache",
+        "type": "",
+        "is_vuln": "",
+        "target_hw": "",
+        "target_sw": "",
+        "update": "",
+        "edition": ""
+      },
+      {
+        "cve_id": "CVE-2026-79768",
+        "cve_description": "Path equivalence: '/./' (single dot directory) vulnerability in Apache HTTP Server's mod_userdir module when configured with absolute non-wildcard UserDir directive (the 2nd form in https://httpd.apache.org/docs/2.4/mod/mod_userdir.html#userdir)\n\n\n\nThis issue affects Apache HTTP Server: from 2.4.0 through 2.4.68.",
+        "cvssv2_vector": "",
+        "cvssv2_score": 0.0,
+        "cvssv3_vector": "NETWORK",
+        "cvssv3_score": 5.3,
+        "list_cpe": [
+          "cpe:2.3:a:apache:http_server:2.4.3:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:2.4.1:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:2.4.5:*:*:*:*:*:*:*"
+        ],
+        "list_cwe": [
+          {
+            "cve_id": "CVE-2026-79768",
+            "cwe_id": 55,
+            "cwe_name": "Path Equivalence: '/./' (Single Dot Directory)",
+            "cwe_description": "The product accepts path input in the form of single dot directory exploit ('/./') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files."
+          }
+        ],
+        "list_edb": [],
+        "app_name": "Apache",
+        "app_version": "2.4.6",
+        "open_port_no_list": {
+          "TCP": [
+            80,
+            443
+          ],
+          "UDP": []
+        },
+        "have_more_ports": false,
+        "open_port_no": [
+          {
+            "port": 80,
+            "socket": "tcp"
+          },
+          {
+            "port": 443,
+            "socket": "tcp"
+          }
+        ],
+        "list_child": [
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.0",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.1",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.2",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          }
+        ],
+        "vendor": "apache",
+        "type": "",
+        "is_vuln": "",
+        "target_hw": "",
+        "target_sw": "",
+        "update": "",
+        "edition": ""
+      },
+      {
+        "cve_id": "CVE-2026-73637",
+        "cve_description": "Use after free in mod_auth_digest in Apache Software Foundation Apache HTTP Server before 2.4.69 on all platforms allows an unauthenticated remote client to cause authentication state corruption via concurrent Digest authentication requests when AuthDigestNcCheck is enabled or AuthDigestNonceLifetime is set to 0.\n\nUsers are recommended to upgrade to version 2.4.69, which fixes this issue.",
+        "cvssv2_vector": "",
+        "cvssv2_score": 0.0,
+        "cvssv3_vector": "NETWORK",
+        "cvssv3_score": 7.3,
+        "list_cpe": [
+          "cpe:2.3:a:apache:http_server:2.4.3:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:2.4.1:*:*:*:*:*:*:*",
+          "cpe:2.3:a:apache:http_server:2.4.5:*:*:*:*:*:*:*"
+        ],
+        "list_cwe": [
+          {
+            "cve_id": "CVE-2026-73637",
+            "cwe_id": 416,
+            "cwe_name": "Use After Free",
+            "cwe_description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory \"belongs\" to the code that operates on the new pointer."
+          }
+        ],
+        "list_edb": [],
+        "app_name": "Apache",
+        "app_version": "2.4.6",
+        "open_port_no_list": {
+          "TCP": [
+            80,
+            443
+          ],
+          "UDP": []
+        },
+        "have_more_ports": false,
+        "open_port_no": [
+          {
+            "port": 80,
+            "socket": "tcp"
+          },
+          {
+            "port": 443,
+            "socket": "tcp"
+          }
+        ],
+        "list_child": [
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.0",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.1",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          },
+          {
+            "app_name": "http_server",
+            "app_version": "2.4.2",
+            "vendor": "apache",
+            "type": "Application",
+            "is_vuln": "True",
+            "target_hw": "",
+            "target_sw": "",
+            "update": "",
+            "edition": ""
+          }
+        ],
+        "vendor": "apache",
+        "type": "",
+        "is_vuln": "",
+        "target_hw": "",
+        "target_sw": "",
+        "update": "",
+        "edition": ""
+      }
+    ]
+  },
+  "mobile": {
+    "count": 0,
+    "data": []
+  },
+  "status": 200
+}

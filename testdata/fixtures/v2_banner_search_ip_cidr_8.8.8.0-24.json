@@ -1,0 +1,155 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "groups": [
+      {
+        "keywords": [],
+        "filters": [
+          {
+            "key": "ip",
+            "value": "8.8.8.0/24",
+            "negate": false
+          }
+        ]
+      }
+    ],
+    "count": 4,
+    "result": [
+      {
+        "ip_address": "8.8.8.53",
+        "country": "US",
+        "city": "",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "dns.google",
+        "cloud_source": "Google",
+        "open_port_no": 80,
+        "service_name": "HTTP",
+        "socket_type": "TCP",
+        "status_code": 404,
+        "banner": "HTTP/1.1\nStatus: 404 Not Found\nContent Length: 1561\nContent Type: text/html; charset=UTF-8\nServer: sffe\nX Content Type Options: nosniff\nX Xss Protection: 0\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;m",
+        "title": "Error 404 (Not Found)!!1",
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-21 04:30:49",
+        "longitude": -97.822,
+        "latitude": 37.751,
+        "jarm": null,
+        "ssl_subject_common_name": null,
+        "ssl_subject_organization": null,
+        "ssl_subject_country": null,
+        "ssl_issuer_organization": null,
+        "ssl_expired": "",
+        "ssl_info": "",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "software": [
+          {
+            "product": "httpd",
+            "version": "Unknown"
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "ip_address": "8.8.8.8",
+        "country": "US",
+        "city": "",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "dns.google",
+        "cloud_source": "Google",
+        "open_port_no": 443,
+        "service_name": "HTTPS",
+        "socket_type": "TCP",
+        "status_code": 200,
+        "banner": "HTTP/2.0\nStatus: 200 OK\nCache Control: public, max-age=300\nContent Type: text/html; charset=UTF-8\nExpires: Tue, 20 Oct 2026 06:45:12 GMT\nServer: scaffolding on HTTPServer2\nX Content Type Options: nosniff\nX Frame Options: SAMEORIGIN\nX Xss Protection: 0\n\n<!DOCTYPE html>\n<html lang=\"en\"> <head> <title>Google Public DNS</title>  <meta charset=\"UTF-8\"> <link href=\"/static/93dd5954/favicon.png\" rel=\"shortcut icon\" type=\"image/png\"> <link href=\"/static/e6eca759/matter.min.css\" rel=\"stylesheet\"> <link h",
+        "title": "Google Public DNS",
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-20 15:45:33",
+        "longitude": -97.822,
+        "latitude": 37.751,
+        "jarm": "29d3fd00029d29d00042d43d00041d8f924f5255cbc229bc55efa16391dad6",
+        "ssl_subject_common_name": "dns.google",
+        "ssl_subject_organization": "",
+        "ssl_subject_country": "",
+        "ssl_issuer_organization": "Google Trust Services",
+        "ssl_expired": false,
+        "ssl_info": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 119760305370515512493719377464821648688\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: WR2\n\tCountry: US\n\tOrganization: Google Trust Services\nIssuer Dn: C=US, O=Google Trust Services, CN=WR2\nValidity:\n\tEnd: 2026-12-11T20:02:28Z\n\tLength: 7.257599e+06\n\tStart: 2026-09-18T20:02:29Z\nSubject:\n\tCommon Name: dns.google\nSubject Dn: CN=dns.google\nSubject Key Info:\n\tFingerprint Sha256: 94e2eeab5836c21ea772a00e89b7ddaa43203f581e639ae26a3353dc0b7d7c48\n\tKey Algorithm:\n\t\tName: RSA\n\tRsa Public Key:\n\t\tExponent: 65537\n\t\tLength:...[truncated 2124 chars]",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [
+          {
+            "snort_classification": "current_events",
+            "snort_rule": [
+              "ET CURRENT_EVENTS TA444 Domain in TLS SNI (bitscrunch .myvnc .com)"
+            ]
+          },
+          {
+            "snort_classification": "info",
+            "snort_rule": [
+              "ET INFO DNS Over HTTPS Certificate Inbound (cnnic-chinatelecom-chinamobile-chinaunicom--bili-d .dahi .icu)"
+            ]
+          },
+          {
+            "snort_classification": "trojan",
+            "snort_rule": [
+              "ET TROJAN Observed Teal Kurma Domain (lo0 .systemctl .network in TLS SNI)"
+            ]
+          }
+        ],
+        "scanner": [],
+        "software": [
+          {
+            "product": "httpd",
+            "version": "Unknown"
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "ip_address": "8.8.8.53",
+        "country": "US",
+        "city": "",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "dns.google",
+        "cloud_source": "Google",
+        "open_port_no": 443,
+        "service_name": "HTTPS",
+        "socket_type": "TCP",
+        "status_code": 404,
+        "banner": "HTTP/2.0\nStatus: 404 Not Found\nContent Length: 1561\nContent Type: text/html; charset=UTF-8\nServer: sffe\nX Content Type Options: nosniff\nX Xss Protection: 0\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;m",
+        "title": "Error 404 (Not Found)!!1",
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-20 15:45:33",
+        "longitude": -97.822,
+        "latitude": 37.751,
+        "jarm": "29d3fd00029d29d21c42d43d00041df61f6b5fa6973e9fa14c8155669c6633",
+        "ssl_subject_common_name": "dns.google",
+        "ssl_subject_organization": "",
+        "ssl_subject_country": "",
+        "ssl_issuer_organization": "Google Trust Services",
+        "ssl_expired": false,
+        "ssl_info": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 119760305370515512493719377464821648688\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: WR2\n\tCountry: US\n\tOrganization: Google Trust Services\nIssuer Dn: C=US, O=Google Trust Services, CN=WR2\nValidity:\n\tEnd: 2026-12-11T20:02:28Z\n\tLength: 7.257599e+06\n\tStart: 2026-09-18T20:02:29Z\nSubject:\n\tCommon Name: dns.google\nSubject Dn: CN=dns.google\nSubject Key Info:\n\tFingerprint Sha256: 94e2eeab5836c21ea772a00e89b7ddaa43203f581e639ae26a3353dc0b7d7c48\n\tKey Algorithm:\n\t\tName: RSA\n\tRsa Public Key:\n\t\tExponent: 65537\n\t\tLength:...[truncated 2124 chars]",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "software": [
+          {
+            "product": "httpd",
+            "version": "Unknown"
+          }
+        ],
+        "operating_systems": []
+      }
+    ]
+  },
+  "timestamp": "2026-10-23 06:34:00"
+}

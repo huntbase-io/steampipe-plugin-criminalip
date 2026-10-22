@@ -1,0 +1,18 @@
+{
+  "ip": "185.220.101.1",
+  "score": {
+    "inbound": "Critical",
+    "outbound": "Moderate"
+  },
+  "country": "Germany",
+  "country_code": "de",
+  "region": "Brandenburg",
+  "city": "Brandenburg an der Havel",
+  "isp": "Stiftung Erneuerbare Freiheit",
+  "org_name": "Stiftung Erneuerbare Freiheit",
+  "as_no": 60729,
+  "postal_code": "14621",
+  "latitude": 52.6171,
+  "longitude": 13.1207,
+  "status": 200
+}

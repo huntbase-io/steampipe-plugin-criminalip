@@ -1,0 +1,130 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "groups": [
+      {
+        "keywords": [],
+        "filters": [
+          {
+            "key": "product",
+            "value": "OpenSSH",
+            "negate": false
+          },
+          {
+            "key": "port",
+            "value": "22",
+            "negate": false
+          },
+          {
+            "key": "country",
+            "value": "KR",
+            "negate": false
+          }
+        ]
+      }
+    ],
+    "count": 100,
+    "result": [
+      {
+        "ip_address": "34.22.88.173",
+        "country": "KR",
+        "city": "Seoul",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "173.88.22.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 22,
+        "service_name": "SSH",
+        "socket_type": "TCP",
+        "status_code": "",
+        "banner": "SSH-2.0-OpenSSH_10.2p1 Ubuntu-2ubuntu3.8\nKey: AAAAC3NzaC1lZDI1NTE5AAAAIGyRS1kRq2Fvf8WOtDAlQ1j/UpLZZVP/W8VfbnufVf/B\nAlgorithm: ssh-ed25519\nFingerprint: d514aa5d96f0d35f9eb3caabd1dd59964703b21691376fa64eee9f42966baf53\n\nKex Algorithms:\n\tmlkem768x25519-sha256\n\tsntrup761x25519-sha512\n\tsntrup761x25519-sha512@openssh.com\n\tcurve25519-sha256\n\tcurve25519-sha256@libssh.org\n\tecdh-sha2-nistp256\n\tecdh-sha2-nistp384\n\tecdh-sha2-nistp521\n\text-info-s\n\tkex-strict-s-v00@openssh.com\n\nServer Host Key Algorithms:\n\trsa",
+        "title": null,
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-22 07:20:04",
+        "longitude": 126.978,
+        "latitude": 37.5658,
+        "jarm": null,
+        "ssl_subject_common_name": null,
+        "ssl_subject_organization": null,
+        "ssl_subject_country": null,
+        "ssl_issuer_organization": null,
+        "ssl_expired": "",
+        "ssl_info": "",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "product": "OpenSSH",
+        "product_version": "10.2p1"
+      },
+      {
+        "ip_address": "34.22.95.87",
+        "country": "KR",
+        "city": "Seoul",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "87.95.22.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 22,
+        "service_name": "SSH",
+        "socket_type": "TCP",
+        "status_code": "",
+        "banner": "SSH-2.0-OpenSSH_10.2p1 Ubuntu-2ubuntu3.8\nKey: AAAAC3NzaC1lZDI1NTE5AAAAIEMnax8O9K474209+P7j3dEeiaVh5ZfhV8k3zkeB8Jig\nAlgorithm: ssh-ed25519\nFingerprint: aec27c492d0d866c63045a62beb8d012b04b210cf8ffd6c81d8581eb9b21316d\n\nKex Algorithms:\n\tmlkem768x25519-sha256\n\tsntrup761x25519-sha512\n\tsntrup761x25519-sha512@openssh.com\n\tcurve25519-sha256\n\tcurve25519-sha256@libssh.org\n\tecdh-sha2-nistp256\n\tecdh-sha2-nistp384\n\tecdh-sha2-nistp521\n\text-info-s\n\tkex-strict-s-v00@openssh.com\n\nServer Host Key Algorithms:\n\trsa",
+        "title": null,
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-22 07:20:04",
+        "longitude": 126.978,
+        "latitude": 37.5658,
+        "jarm": null,
+        "ssl_subject_common_name": null,
+        "ssl_subject_organization": null,
+        "ssl_subject_country": null,
+        "ssl_issuer_organization": null,
+        "ssl_expired": "",
+        "ssl_info": "",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "product": "OpenSSH",
+        "product_version": "10.2p1"
+      },
+      {
+        "ip_address": "34.22.94.211",
+        "country": "KR",
+        "city": "Seoul",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "211.94.22.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 22,
+        "service_name": "SSH",
+        "socket_type": "TCP",
+        "status_code": "",
+        "banner": "SSH-2.0-OpenSSH_10.0\nKey: AAAAC3NzaC1lZDI1NTE5AAAAIIJUXwe2v9hnluqV6vt6j/Wm1Uo43dBSfDHvU9hxXO3w\nAlgorithm: ssh-ed25519\nFingerprint: 04022ce4979574c7065656235155d9f94b9fc9fd6cb6ba696b00097051e623e0\n\nKex Algorithms:\n\tmlkem768x25519-sha256\n\tsntrup761x25519-sha512\n\tsntrup761x25519-sha512@openssh.com\n\tcurve25519-sha256\n\tcurve25519-sha256@libssh.org\n\tecdh-sha2-nistp256\n\tecdh-sha2-nistp384\n\tecdh-sha2-nistp521\n\tdiffie-hellman-group-exchange-sha256\n\text-info-s\n\tkex-strict-s-v00@openssh.com\n\nServer Host Ke",
+        "title": null,
+        "has_cve": true,
+        "tags": [],
+        "scan_dtime": "2026-10-22 07:20:04",
+        "longitude": 126.978,
+        "latitude": 37.5658,
+        "jarm": null,
+        "ssl_subject_common_name": null,
+        "ssl_subject_organization": null,
+        "ssl_subject_country": null,
+        "ssl_issuer_organization": null,
+        "ssl_expired": "",
+        "ssl_info": "",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "product": "OpenSSH",
+        "product_version": "10.0"
+      }
+    ]
+  }
+}

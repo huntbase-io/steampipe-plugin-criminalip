@@ -1,0 +1,27 @@
+{
+  "data": {
+    "count": 101,
+    "reports": [
+      {
+        "reg_dtime": "2026-10-19 03:53:44",
+        "scan_id": "80587d0c26b8417881c9c29f13ff462b",
+        "score": "Safe",
+        "url": "https://example.com"
+      },
+      {
+        "reg_dtime": "2026-10-14 05:26:32",
+        "scan_id": "13d0e21b985343f5a80296631dce1b21",
+        "score": "Safe",
+        "url": "https://example.com"
+      },
+      {
+        "reg_dtime": "2026-10-07 04:13:21",
+        "scan_id": "ea881a365f1d466f8808bd2f53cec3d4",
+        "score": "Safe",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  "message": "api success",
+  "status": 200
+}

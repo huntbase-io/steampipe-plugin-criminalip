@@ -1,0 +1,61 @@
+{
+  "issue": [
+    "Cloud Service",
+    "Hosting"
+  ],
+  "tags": [],
+  "ip_scoring": {
+    "inbound": "Safe",
+    "outbound": "Safe",
+    "is_malicious": false
+  },
+  "current_open_ports": {
+    "TCP": [
+      {
+        "port": 53,
+        "has_vulnerability": false
+      },
+      {
+        "port": 443,
+        "has_vulnerability": false
+      }
+    ],
+    "UDP": []
+  },
+  "summary": {
+    "connection": {
+      "representative_domain": null,
+      "ssl_certificate": true,
+      "ip_address_owner": "Google LLC",
+      "hostname": "dns.google",
+      "connected_domains": 1,
+      "country": "us"
+    },
+    "detection": {
+      "proxy_ip": false,
+      "vpn_ip": false,
+      "tor_ip": false,
+      "hosting_ip": true,
+      "mobile_ip": false,
+      "cdn_ip": false,
+      "scanner_ip": false,
+      "special_issue": 0,
+      "anonymous_vpn_detection": false
+    },
+    "security": {
+      "abuse_record": 2692,
+      "open_ports": 2,
+      "vulnerabilities": 0,
+      "exploit_db": 0,
+      "policy_violation": 0,
+      "remote_address": false,
+      "network_device": false,
+      "admin_page": false,
+      "invalid_ssl": false
+    },
+    "dns_service": {
+      "real_ip": false
+    }
+  },
+  "status": 200
+}

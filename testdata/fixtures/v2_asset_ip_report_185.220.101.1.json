@@ -1,0 +1,210 @@
+{
+  "ip": "185.220.101.1",
+  "timestamp": "2026-10-22 21:30:55",
+  "issues": {
+    "is_vpn": false,
+    "is_cloud": false,
+    "is_tor": true,
+    "is_proxy": false,
+    "is_hosting": false,
+    "is_mobile": false,
+    "is_darkweb": false,
+    "is_scanner": false,
+    "is_snort": true,
+    "is_anonymous_vpn": false
+  },
+  "score": {
+    "inbound": "Critical",
+    "outbound": "Moderate"
+  },
+  "user_search_count": 18,
+  "protected_ip": {
+    "count": 0,
+    "data": []
+  },
+  "domain": {
+    "count": 0,
+    "data": []
+  },
+  "whois": {
+    "count": 1,
+    "data": [
+      {
+        "as_name": "Stiftung Erneuerbare Freiheit",
+        "as_no": 60729,
+        "city": "Brandenburg an der Havel",
+        "region": "Brandenburg",
+        "org_name": "Stiftung Erneuerbare Freiheit",
+        "postal_code": "14621",
+        "latitude": 52.6171,
+        "longitude": 13.1207,
+        "org_country_code": "de",
+        "confirmed_time": "2026-10-22 00:00:00"
+      }
+    ]
+  },
+  "hostname": {
+    "count": 1,
+    "data": [
+      {
+        "domain_name_rep": "artikel10.org",
+        "domain_name_full": "berlin01.tor-exit.artikel10.org",
+        "confirmed_time": "2026-07-25 07:00:17"
+      }
+    ]
+  },
+  "ids": {
+    "count": 10,
+    "data": [
+      {
+        "classification": "tor",
+        "url": "www.dan.me.uk/torlist/",
+        "message": "ET TOR Known Tor Relay/Router (Not Exit) Node TCP Traffic group 26",
+        "source_system": "snort-2.9.0 11316",
+        "confirmed_time": "2026-10-22 03:09:54"
+      },
+      {
+        "classification": "3coresec",
+        "url": "blacklist.3coresec.net/lists/et-open.txt",
+        "message": "ET 3CORESec Poor Reputation IP UDP group 12",
+        "source_system": "./snort-2.9.0 10377",
+        "confirmed_time": "2023-07-25 01:15:42"
+      },
+      {
+        "classification": "compromised",
+        "url": "doc.emergingthreats.net/bin/view/Main/CompromisedHosts",
+        "message": "ET COMPROMISED Known Compromised or Hostile Host Traffic UDP group 52",
+        "source_system": "./snort-2.9.0 9781",
+        "confirmed_time": "2021-06-28 17:18:06"
+      }
+    ]
+  },
+  "vpn": {
+    "count": 0,
+    "data": []
+  },
+  "anonymous_vpn": {
+    "count": 0,
+    "data": []
+  },
+  "webcam": {
+    "count": 0,
+    "data": []
+  },
+  "honeypot": {
+    "count": 2,
+    "data": [
+      {
+        "ip_address": "185.220.101.1",
+        "log_date": "2026-05-13",
+        "dst_port": 80,
+        "message": "[13/May/2026:07:20:59] HEAD /?_HELP_ME_ESCAPE_FROM_BELARUS_PLEASE_ HTTP/1.1",
+        "user_agent": "Wget/1.21.4 ( https://hmefb.fwh.is | HelpMeEscapeFromBelarus@proton.me)",
+        "protocol_type": "tcp",
+        "confirmed_time": "2026-05-13"
+      },
+      {
+        "ip_address": "185.220.101.1",
+        "log_date": "2026-01-23",
+        "dst_port": 443,
+        "message": "[23/Jan/2026:17:45:13] TLS Handshake",
+        "user_agent": "-",
+        "protocol_type": "tcp",
+        "confirmed_time": "2026-01-23"
+      }
+    ]
+  },
+  "ip_category": {
+    "count": 20,
+    "data": [
+      {
+        "detect_source": "",
+        "type": "tor (Tor)",
+        "detect_info": {},
+        "confirmed_time": "2026-10-22 15:52:43"
+      },
+      {
+        "detect_source": "",
+        "type": "MISP",
+        "detect_info": {},
+        "confirmed_time": "2026-10-20 16:39:04"
+      },
+      {
+        "detect_source": "C-TAS(N/A)",
+        "type": "attack (Low)",
+        "detect_info": {},
+        "confirmed_time": "2026-05-31 05:47:46"
+      }
+    ]
+  },
+  "port": {
+    "count": 20,
+    "data": [
+      {
+        "banner": "TLS Found\n\nTLS Certificate\nVersion: 3\nSerial Number: 12524842385102520979\nSignature Algorithm: \n\tName: SHA256WithRSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer: \n\tCommon Name: www.pwt6irj7co.com\nIssuer Dn: CN=www.pwt6irj7co.com\nValidity: \n\tStart: 2026-10-04T00:00:00Z\n\tEnd: 2026-11-06T23:59:59Z\n\tLength: 2937599\nSubject: \n\tCommon Name: www.dp5t4eoonok.net\nSubject Dn: CN=www.dp5t4eoonok.net\nSubject Key Info: \n\tKey Algorithm: \n\t\tName: RSA\n\tRsa Public Key: \n\t\tExponent: 65537\n\t\tModulus: khJAvAq/sfa3O7aVCgO8OY8O9Df3dflx80xFnUzVXL4XuOEBf9CYPVOY1yHQAj+3zi+pSdwnNSt4btGTT9Hmp0hUPutYj66FbQH6lfVC8YRZ4r1h0nTDjpECAQ...[truncated 726 chars]",
+        "open_port_no": 9004,
+        "port_status": "open",
+        "protocol": "",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": "www.dp5t4eoonok.net",
+        "sdn_common_name": "www.dp5t4eoonok.net",
+        "jarm_hash": "",
+        "ssl_info_raw": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 12524842385102520979\nSignature Algorithm: \n\tName: SHA256WithRSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer: \n\tCommon Name: www.pwt6irj7co.com\nIssuer Dn: CN=www.pwt6irj7co.com\nValidity: \n\tStart: 2026-10-04T00:00:00Z\n\tEnd: 2026-11-06T23:59:59Z\n\tLength: 2937599\nSubject: \n\tCommon Name: www.dp5t4eoonok.net\nSubject Dn: CN=www.dp5t4eoonok.net\nSubject Key Info: \n\tKey Algorithm: \n\t\tName: RSA\n\tRsa Public Key: \n\t\tExponent: 65537\n\t\tModulus: khJAvAq/sfa3O7aVCgO8OY8O9Df3dflx80xFnUzVXL4XuOEBf9CYPVOY1yHQAj+3zi+pSdwnNSt4btGTT9Hmp0hUPutYj66FbQH6lfVC8YRZ4r1h0nTDjpECAQnYxJFY9dY...[truncated 717 chars]",
+        "technologies": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 10:41:54",
+        "software": [],
+        "operating_systems": []
+      },
+      {
+        "banner": "HTTP/1.1\nStatus: 200 OK\nDate: Thu, 22 Oct 2026 09:48:26 GMT\nEtag: W/\"630ccdd2-8f8\nContent Type: text/html\nLast Modified: Mon, 29 Aug 2022 14:31:46 GMT\nServer: nginx\n\n<!DOCTYPE html>\n<html>\n\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,minimum-scale=1\">\n<title>This is a Tor Exit Node</title>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n</head>\n\n<body>\n<h1>This is a Tor Exit Node</h1>\n\n<p>\nThis server is operated by <a href=\"https://artikel10.org/\" target=\"_blank\" rel=\"noopener\">Artikel10 e.V.</a> as part of the <a href=\"https://www.torproject.org/\"...[truncated 1861 chars]",
+        "open_port_no": 80,
+        "port_status": "open",
+        "protocol": "HTTP",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": null,
+        "sdn_common_name": null,
+        "jarm_hash": null,
+        "ssl_info_raw": null,
+        "technologies": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 09:50:11",
+        "software": [
+          {
+            "product": "nginx",
+            "version": ""
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "banner": "TLS Found\n\nTLS Certificate\nVersion: 3\nSerial Number: 278267606047312065\nSignature Algorithm: \n\tName: SHA256WithRSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer: \n\tCommon Name: www.f2yybkqau3e2cjhv.com\nIssuer Dn: CN=www.f2yybkqau3e2cjhv.com\nValidity: \n\tStart: 2026-08-10T00:00:00Z\n\tEnd: 2027-05-17T23:59:59Z\n\tLength: 24278399\nSubject: \n\tCommon Name: www.okxp5zcqevmfrb7.net\nSubject Dn: CN=www.okxp5zcqevmfrb7.net\nSubject Key Info: \n\tKey Algorithm: \n\t\tName: RSA\n\tRsa Public Key: \n\t\tExponent: 65537\n\t\tModulus: xvOywU+iQKD4JmoDvnYO5jYHlovT2Az1ABssdUqySFlQTy8KaiaxbkIh9MxgwUjyMP6zf1iyjlYxUhz6E6EZ2CeRoD7RQj9xS1huHos...[truncated 745 chars]",
+        "open_port_no": 9003,
+        "port_status": "open",
+        "protocol": "",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": "www.okxp5zcqevmfrb7.net",
+        "sdn_common_name": "www.okxp5zcqevmfrb7.net",
+        "jarm_hash": "",
+        "ssl_info_raw": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 278267606047312065\nSignature Algorithm: \n\tName: SHA256WithRSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer: \n\tCommon Name: www.f2yybkqau3e2cjhv.com\nIssuer Dn: CN=www.f2yybkqau3e2cjhv.com\nValidity: \n\tStart: 2026-08-10T00:00:00Z\n\tEnd: 2027-05-17T23:59:59Z\n\tLength: 24278399\nSubject: \n\tCommon Name: www.okxp5zcqevmfrb7.net\nSubject Dn: CN=www.okxp5zcqevmfrb7.net\nSubject Key Info: \n\tKey Algorithm: \n\t\tName: RSA\n\tRsa Public Key: \n\t\tExponent: 65537\n\t\tModulus: xvOywU+iQKD4JmoDvnYO5jYHlovT2Az1ABssdUqySFlQTy8KaiaxbkIh9MxgwUjyMP6zf1iyjlYxUhz6E6EZ2CeRoD7RQj9xS1huHosjpiqKvMvZ...[truncated 736 chars]",
+        "technologies": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-21 15:32:49",
+        "software": [],
+        "operating_systems": []
+      }
+    ]
+  },
+  "vulnerability": {
+    "count": 0,
+    "data": []
+  },
+  "mobile": {
+    "count": 0,
+    "data": []
+  },
+  "status": 200
+}

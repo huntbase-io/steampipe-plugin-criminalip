@@ -1,0 +1,65 @@
+{
+  "issue": [
+    "Tor",
+    "Snort"
+  ],
+  "tags": [],
+  "ip_scoring": {
+    "inbound": "Critical",
+    "outbound": "Moderate",
+    "is_malicious": true
+  },
+  "current_open_ports": {
+    "TCP": [
+      {
+        "port": 80,
+        "has_vulnerability": false
+      },
+      {
+        "port": 9003,
+        "has_vulnerability": false
+      },
+      {
+        "port": 9004,
+        "has_vulnerability": false
+      }
+    ],
+    "UDP": []
+  },
+  "summary": {
+    "connection": {
+      "representative_domain": null,
+      "ssl_certificate": true,
+      "ip_address_owner": "Stiftung Erneuerbare Freiheit",
+      "hostname": "berlin01.tor-exit.artikel10.org",
+      "connected_domains": 0,
+      "country": "de"
+    },
+    "detection": {
+      "proxy_ip": false,
+      "vpn_ip": false,
+      "tor_ip": true,
+      "hosting_ip": false,
+      "mobile_ip": false,
+      "cdn_ip": false,
+      "scanner_ip": false,
+      "special_issue": 0,
+      "anonymous_vpn_detection": false
+    },
+    "security": {
+      "abuse_record": 37,
+      "open_ports": 3,
+      "vulnerabilities": 0,
+      "exploit_db": 0,
+      "policy_violation": 0,
+      "remote_address": false,
+      "network_device": false,
+      "admin_page": false,
+      "invalid_ssl": false
+    },
+    "dns_service": {
+      "real_ip": false
+    }
+  },
+  "status": 200
+}

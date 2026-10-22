@@ -1,0 +1,70 @@
+{
+  "data": {
+    "classification": {
+      "dga_score": 0.196,
+      "domain_type": []
+    },
+    "dns_record": {
+      "dns_record_type_a": {
+        "ipv4": [],
+        "ipv6": []
+      },
+      "dns_record_type_cname": [],
+      "dns_record_type_mx": [],
+      "dns_record_type_ns": [],
+      "dns_record_type_ptr": [],
+      "dns_record_type_soa": []
+    },
+    "domain_score": {
+      "score": "safe",
+      "score_num": 0.0,
+      "score_percentage": 20
+    },
+    "main_domain_info": {
+      "changed_url": "",
+      "domain_created": "1997-09-15",
+      "domain_registrar": "MarkMonitor Inc.",
+      "inserted_url": "https://google.com",
+      "main_domain": "google.com"
+    },
+    "mapped_ip": [
+      {
+        "as_name": "GOOGLE",
+        "country": "US",
+        "ip": "142.251.118.102",
+        "score": "low"
+      },
+      {
+        "as_name": "GOOGLE",
+        "country": "US",
+        "ip": "142.251.118.138",
+        "score": "low"
+      },
+      {
+        "as_name": "GOOGLE",
+        "country": "US",
+        "ip": "142.251.118.101",
+        "score": "low"
+      }
+    ],
+    "real_ip": [],
+    "report_time": "2026-10-22 20:35:37",
+    "summary": {
+      "abuse_record": {
+        "critical": 0,
+        "dangerous": 0,
+        "moderate": 0
+      },
+      "dga_score": 0.196,
+      "fake_https_url": false,
+      "mail_server": false,
+      "overlong_domain": false,
+      "punycode": false,
+      "real_ip": 5,
+      "symbol_url": false,
+      "url_phishing_prob": 0.01
+    }
+  },
+  "message": "api success",
+  "status": 200
+}

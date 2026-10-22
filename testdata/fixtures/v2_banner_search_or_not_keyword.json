@@ -1,0 +1,159 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "groups": [
+      {
+        "keywords": [
+          {
+            "keyword": "\"default password\"",
+            "negate": false
+          }
+        ],
+        "filters": [
+          {
+            "key": "port",
+            "value": "8080",
+            "negate": false
+          }
+        ]
+      },
+      {
+        "keywords": [],
+        "filters": [
+          {
+            "key": "port",
+            "value": "8443",
+            "negate": false
+          },
+          {
+            "key": "country",
+            "value": "US",
+            "negate": true
+          }
+        ]
+      }
+    ],
+    "count": 76256,
+    "result": [
+      {
+        "ip_address": "34.141.81.106",
+        "country": "DE",
+        "city": "Frankfurt am Main",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "106.81.141.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 8443,
+        "service_name": null,
+        "socket_type": "TCP",
+        "status_code": 200,
+        "banner": "HTTP/2.0\nStatus: 200 OK\nCache Control: no-store, no-cache, must-revalidate\nContent Type: text/html; charset=utf-8\nExpires: Fri, 28 May 1999 00:00:00 GMT\nLast Modified: Wed, 21 Oct 2026 22:40:05 GMT\nP3p: CP=\"NON COR CURa ADMa OUR NOR UNI COM NAV STA\"\nServer: nginx\nSet Cookie: plesk-ext-social-login-jwt-session=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwbGVzayIsImlhdCI6MTc5MjYyMjQwNSwiZGF0YSI6eyJzdGF0ZS13ZWJhdXRobiI6Ik1keGR0SDNMUVRVRVRzdEFvMDBwMXZOYmY5VE9PaFphSmk4N3Q1dlp8cmVkaXJlY3QtcGxlc2s9",
+        "title": "Plesk Obsidian 18.0.81",
+        "has_cve": false,
+        "tags": [
+          "DSM",
+          "DevOps"
+        ],
+        "scan_dtime": "2026-10-22 07:40:15",
+        "longitude": 8.6837,
+        "latitude": 50.1169,
+        "jarm": "00000000000000000042d43d0000009535d5979f591ae8e547c5e5743e5b64",
+        "ssl_subject_common_name": "web1.777sunucu.com",
+        "ssl_subject_organization": "",
+        "ssl_subject_country": "",
+        "ssl_issuer_organization": "Let's Encrypt",
+        "ssl_expired": false,
+        "ssl_info": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 539483698222720038675282299357820527026600\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: YR2\n\tCountry: US\n\tOrganization: Let's Encrypt\nIssuer Dn: C=US, O=Let's Encrypt, CN=YR2\nValidity:\n\tEnd: 2026-12-11T07:13:43Z\n\tLength: 7.775999e+06\n\tStart: 2026-09-12T07:13:44Z\nSubject:\n\tCommon Name: web1.777sunucu.com\nSubject Dn: CN=web1.777sunucu.com\nSubject Key Info:\n\tFingerprint Sha256: 40145471f1fdc7eb37e9c2ba3469182184883532ab25f7f9851f3cb72cb62f2c\n\tKey Algorithm:\n\t\tName: RSA\n\tRsa Public Key:\n\t\tExponent: 65537\n\t\tLeng...[truncated 1954 chars]",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "software": [
+          {
+            "product": "Plesk Obsidian",
+            "version": "18.0.81"
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "ip_address": "34.141.80.126",
+        "country": "DE",
+        "city": "Frankfurt am Main",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "126.80.141.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 8443,
+        "service_name": null,
+        "socket_type": "TCP",
+        "status_code": 200,
+        "banner": "HTTP/1.1\nStatus: 200 \nContent Length: 5427\nContent Type: text/html\nLast Modified: Mon, 21 Jul 2025 11:14:50 GMT\nX Content Type Options: nosniff\nX Frame Options: DENY\n\n<!DOCTYPE html>\n<!--\n    Licensed to the Apache Software Foundation (ASF) under one\n    or more contributor license agreements.  See the NOTICE file\n    distributed with this work for additional information\n    regarding copyright ownership.  The ASF licenses this file\n    to you under the Apache License, Version 2.0 (the\n    \"Lice",
+        "title": null,
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-22 07:40:15",
+        "longitude": 8.6837,
+        "latitude": 50.1169,
+        "jarm": "15d2ad16d29d29d00042d43d00041ddb04deffa1705e2edc44cae1ed24a4da",
+        "ssl_subject_common_name": "*.opsramp.com",
+        "ssl_subject_organization": "Hewlett Packard Enterprise Company",
+        "ssl_subject_country": "US",
+        "ssl_issuer_organization": "DigiCert Inc",
+        "ssl_expired": true,
+        "ssl_info": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 21001141879344240260343535861772177496\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: DigiCert Global G2 TLS RSA SHA256 2020 CA1\n\tCountry: US\n\tOrganization: DigiCert Inc\nIssuer Dn: C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1\nValidity:\n\tEnd: 2025-10-07T23:59:59Z\n\tLength: 3.1535999e+07\n\tStart: 2024-10-08T00:00:00Z\nSubject:\n\tCommon Name: *.opsramp.com\n\tCountry: US\n\tLocality: Spring\n\tOrganization: Hewlett Packard Enterprise Company\n\tProvince: Texas\nSubject Dn: C=US, ST=Texas, L=Spring, O=H...[truncated 2572 chars]",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "software": [
+          {
+            "product": "httpd",
+            "version": "Unknown"
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "ip_address": "34.141.80.104",
+        "country": "DE",
+        "city": "Frankfurt am Main",
+        "as_name": "Google LLC",
+        "org_name": "",
+        "hostname": "104.80.141.34.bc.googleusercontent.com",
+        "cloud_source": "Google",
+        "open_port_no": 8443,
+        "service_name": null,
+        "socket_type": "TCP",
+        "status_code": 200,
+        "banner": "HTTP/1.1\nStatus: 200 OK\nCache Control: max-age=0, must-revalidate\nContent Length: 131\nContent Type: text/html\nX Content Type Options: nosniff\nX Frame Options: SAMEORIGIN\nX Xss Protection: 1; mode=block\n\n<html><script type=\"text/javascript\">\nif (window!=top) top.location=window.location;top.location=\"/remote/login\";\n</script></html>",
+        "title": null,
+        "has_cve": false,
+        "tags": [],
+        "scan_dtime": "2026-10-22 07:40:15",
+        "longitude": 8.6837,
+        "latitude": 50.1169,
+        "jarm": "2ad2ad16d2ad2ad00042d42d000000a5308aa908d3edc2392a602b7adac57a",
+        "ssl_subject_common_name": "*.int.betika.com",
+        "ssl_subject_organization": "",
+        "ssl_subject_country": "",
+        "ssl_issuer_organization": "GlobalSign nv-sa",
+        "ssl_expired": false,
+        "ssl_info": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 24690299856913348582742514802\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: GlobalSign GCC R6 AlphaSSL CA 2025\n\tCountry: BE\n\tOrganization: GlobalSign nv-sa\nIssuer Dn: C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025\nValidity:\n\tEnd: 2026-11-06T12:51:09Z\n\tLength: 3.4300799e+07\n\tStart: 2025-10-05T12:51:10Z\nSubject:\n\tCommon Name: *.int.betika.com\nSubject Dn: CN=*.int.betika.com\nSubject Key Info:\n\tFingerprint Sha256: f4ec497984d7b3b317a4e5c43f44555557f65cedfc9cb22074a7d1041a8aabf8\n\tKey Algorithm:\n\t...[truncated 2396 chars]",
+        "favicons": [],
+        "tech_stacks": [],
+        "snort": [],
+        "scanner": [],
+        "software": [
+          {
+            "product": "httpd",
+            "version": "Unknown"
+          }
+        ],
+        "operating_systems": []
+      }
+    ]
+  },
+  "timestamp": "2026-10-23 06:29:34"
+}

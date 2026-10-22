@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "message": "api success",
+  "data": {
+    "call_count": 96364,
+    "domain": "google.com",
+    "reg_dtime": "2023-05-15 06:13:54",
+    "result": "safe",
+    "type": "trusted-domain"
+  }
+}

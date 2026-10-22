@@ -1,0 +1,130 @@
+{
+  "status": 200,
+  "ip": "8.8.8.8",
+  "is_malicious": false,
+  "is_vpn": false,
+  "is_hosting": true,
+  "is_anonymous_vpn": false,
+  "can_remote_access": false,
+  "is_actor": true,
+  "std_info": {
+    "representative_domain": null,
+    "hostname": "dns.google",
+    "hostname_dtime ": "2026-08-31 08:09:54",
+    "as_name": "google llc",
+    "country": "United States"
+  },
+  "actor": {
+    "count": 7,
+    "data": [
+      {
+        "name": "Lazarus",
+        "url": "https://search.criminalip.io/intelligence/hacking-group/Lazarus?category=group_name&query=",
+        "actor_dtime": "2026-05-17 13:20:00"
+      },
+      {
+        "name": "Bluenoroff",
+        "url": "https://search.criminalip.io/intelligence/hacking-group/Bluenoroff?category=group_name&query=",
+        "actor_dtime": "2026-05-17 13:00:00"
+      },
+      {
+        "name": "SideWinder",
+        "url": "https://search.criminalip.io/intelligence/hacking-group/SideWinder?category=group_name&query=",
+        "actor_dtime": "2026-01-21 00:03:51"
+      }
+    ]
+  },
+  "current_opened_port": {
+    "count": 2,
+    "data": [
+      {
+        "socket_type": "tcp",
+        "port": 443,
+        "protocol": "https",
+        "product_name": "httpd",
+        "product_version": "unknown",
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-22 17:33:04",
+        "ssl_cert_name": "WR2",
+        "ssl_etc_name": "",
+        "ssl_dtime": "2026-10-17 16:31:35",
+        "is_ssl_expired": false,
+        "is_ssl_selfsigned": false,
+        "tags": []
+      },
+      {
+        "socket_type": "tcp",
+        "port": 53,
+        "protocol": "dns",
+        "product_name": "unknown",
+        "product_version": "unknown",
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-10 04:30:01",
+        "ssl_cert_name": null,
+        "ssl_etc_name": "",
+        "ssl_dtime": null,
+        "is_ssl_expired": true,
+        "is_ssl_selfsigned": false,
+        "tags": []
+      }
+    ]
+  },
+  "remote_port": {
+    "count": 0,
+    "data": []
+  },
+  "vulnerability": {
+    "count": 0,
+    "data": []
+  },
+  "ids": {
+    "count": 4,
+    "data": [
+      {
+        "classification": "trojan",
+        "url": "www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/tortoise-and-malwahare.html",
+        "message": "ET TROJAN Observed Teal Kurma Domain (lo0 .systemctl .network in TLS SNI)",
+        "source_system": "./snort-2.9.0 10519",
+        "confirmed_time": "2024-01-31 16:13:58"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (bitscrunch .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:52"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (naverk .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:47"
+      }
+    ]
+  },
+  "scanning_record": {
+    "count": 0,
+    "data": []
+  },
+  "ip_category": {
+    "count": 2689,
+    "data": [
+      {
+        "type": "cloud service",
+        "detect_source": "Google",
+        "confirmed_time": "2026-10-22 19:09:12"
+      },
+      {
+        "type": "reputation",
+        "detect_source": "",
+        "confirmed_time": "2026-10-22 15:18:04"
+      },
+      {
+        "type": "MISP",
+        "detect_source": "",
+        "confirmed_time": "2026-10-22 05:27:24"
+      }
+    ]
+  }
+}

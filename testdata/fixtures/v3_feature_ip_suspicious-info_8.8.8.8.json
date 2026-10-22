@@ -1,0 +1,96 @@
+{
+  "status": 200,
+  "ip": "8.8.8.8",
+  "timestamp": "2026-10-22 21:28:56",
+  "score": {
+    "inbound": "Safe",
+    "outbound": "Safe"
+  },
+  "issues": {
+    "is_vpn": false,
+    "is_anonymous_vpn": false,
+    "is_cloud": true,
+    "is_tor": false,
+    "is_proxy": false,
+    "is_hosting": true,
+    "is_mobile": false,
+    "is_darkweb": false,
+    "is_scanner": false,
+    "is_snort": false
+  },
+  "representative_domain": "",
+  "abuse_record_count": 2692,
+  "whois": {
+    "count": 1,
+    "data": [
+      {
+        "as_name": "Google LLC",
+        "as_no": 15169,
+        "city": null,
+        "region": null,
+        "org_name": "Google",
+        "postal_code": null,
+        "latitude": 37.751,
+        "longitude": -97.822,
+        "org_country_code": "us",
+        "confirmed_time": "2026-10-22 00:00:00"
+      }
+    ]
+  },
+  "ids": {
+    "count": 4,
+    "data": [
+      {
+        "classification": "trojan",
+        "url": "www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/tortoise-and-malwahare.html",
+        "message": "ET TROJAN Observed Teal Kurma Domain (lo0 .systemctl .network in TLS SNI)",
+        "source_system": "./snort-2.9.0 10519",
+        "confirmed_time": "2024-01-31 16:13:58"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (bitscrunch .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:52"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (naverk .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:47"
+      }
+    ]
+  },
+  "current_opened_port": {
+    "count": 2,
+    "data": [
+      {
+        "port": 443,
+        "socket_type": "tcp",
+        "protocol": "HTTPS",
+        "tags": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 17:33:04",
+        "software": [
+          {
+            "product": "httpd",
+            "version": ""
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "port": 53,
+        "socket_type": "tcp",
+        "protocol": "DNS",
+        "tags": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-10 04:30:01",
+        "software": [],
+        "operating_systems": []
+      }
+    ]
+  }
+}

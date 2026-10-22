@@ -1,0 +1,26 @@
+# Binaries
+*.plugin
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/steampipe-plugin-criminalip
+dist/
+
+# Secrets: never commit keys
+.env
+.env.*
+*.pdf
+# connection files with real keys; config/criminalip.spc is the keyless template
+*.spc
+!config/criminalip.spc
+
+# Editor and OS cruft
+*.swp
+*.swo
+.idea/
+.vscode/
+.DS_Store

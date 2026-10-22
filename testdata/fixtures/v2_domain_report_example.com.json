@@ -1,0 +1,392 @@
+{
+  "status": 200,
+  "message": "api success",
+  "data": {
+    "certificates": [
+      {
+        "certificate_life": "2 Months",
+        "issuer": "Cloudflare TLS Issuing ECC CA 3",
+        "protocol": "QUIC",
+        "subject": "example.com",
+        "valid_from": "2026-09-27 07:49:11",
+        "valid_to": "2026-12-26 07:56:35"
+      }
+    ],
+    "classification": {
+      "dga_score": 0.001,
+      "domain_type": [
+        {
+          "name": "top_rank",
+          "type": "general"
+        },
+        {
+          "name": "company",
+          "type": "general"
+        },
+        {
+          "name": "certificate_site_type",
+          "type": "general"
+        }
+      ],
+      "google_safe_browsing": []
+    },
+    "connected_domain_subdomain": [
+      {
+        "main_domain": {
+          "domain": "example.com"
+        },
+        "subdomains": []
+      }
+    ],
+    "connected_ip": [
+      {
+        "ip": "104.20.23.154",
+        "score": "moderate"
+      }
+    ],
+    "connected_ip_info": [
+      {
+        "as_name": "CLOUDFLARENET",
+        "asn": "13335",
+        "cnt": 2,
+        "country": "",
+        "domain_list": [
+          {
+            "domain": "example.com"
+          }
+        ],
+        "ip": "104.20.23.154",
+        "redirect_cnt": 0,
+        "score": "moderate"
+      }
+    ],
+    "cookies": [],
+    "detected_program": {
+      "program_data_in_html_source": [],
+      "program_data_with_access": []
+    },
+    "dns_record": {
+      "dns_record_type_a": {
+        "ipv4": [
+          {
+            "ip": "172.66.147.243",
+            "score": "safe"
+          },
+          {
+            "ip": "104.20.23.154",
+            "score": "moderate"
+          }
+        ],
+        "ipv6": [
+          {
+            "ip": "2606:4700:10::ac42:93f3",
+            "score": "low"
+          },
+          {
+            "ip": "2606:4700:10::6814:179a",
+            "score": "low"
+          }
+        ]
+      },
+      "dns_record_type_cname": [],
+      "dns_record_type_mx": [],
+      "dns_record_type_ns": [
+        "hera.ns.cloudflare.com.",
+        "elliott.ns.cloudflare.com."
+      ],
+      "dns_record_type_ptr": [],
+      "dns_record_type_soa": []
+    },
+    "file_exposure": {
+      "apache_status": false,
+      "docker_registry": false,
+      "ds_store": false,
+      "firebase": false,
+      "git_config": false,
+      "json_config": false,
+      "phpinfo": false,
+      "vscode_sftp_json": false,
+      "wordpress": false
+    },
+    "frames": [
+      {
+        "frame_id": "368B6A228713443E6339146EDB95DABC",
+        "transfer_cnt": 2,
+        "url": "about:blank"
+      }
+    ],
+    "html_page_link_domains": [
+      {
+        "domain": "iana.org",
+        "mapped_ips": [
+          {
+            "as_name": "ICANN-DC",
+            "country": "US",
+            "ip": "192.0.43.8",
+            "score": "moderate"
+          }
+        ],
+        "nslookup_time": "2026-10-22 12:31:31"
+      }
+    ],
+    "javascript_variables": [
+      {
+        "variable_name": "window",
+        "variable_type": "Window"
+      },
+      {
+        "variable_name": "self",
+        "variable_type": "Window"
+      },
+      {
+        "variable_name": "document",
+        "variable_type": "HTMLDocument"
+      }
+    ],
+    "links": [
+      {
+        "title": "Learn more",
+        "url": "https://iana.org/help/example-domains"
+      }
+    ],
+    "main_certificate": {
+      "enddate": "2026-12-25 22:56:35",
+      "issuer": "Cloudflare TLS Issuing ECC CA 3",
+      "signed_algorithm": "ecdsa-with-SHA256",
+      "startdate": "2026-09-26 22:49:11",
+      "subject": "example.com"
+    },
+    "main_domain_info": {
+      "changed_url": "https://example.com",
+      "dns_ip_asn": "Cloudflare, Inc.",
+      "domain_created": "1995-08-14",
+      "domain_registrar": "RESERVED-Internet Assigned Numbers Authority",
+      "domain_score": {
+        "score": "safe",
+        "score_num": 0.0,
+        "score_percentage": 20
+      },
+      "favicon": [],
+      "inserted_url": "https://example.com",
+      "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+      "main_domain": "example.com",
+      "real_ip": [
+        {
+          "dns_ip": "172.66.147.243",
+          "dns_ip_score": "Low",
+          "port": "80",
+          "real_ip": "153.127.7.203",
+          "real_ip_score": "Low"
+        },
+        {
+          "dns_ip": "104.18.27.120",
+          "dns_ip_score": "Safe",
+          "port": "443",
+          "real_ip": "46.242.131.209",
+          "real_ip_score": "Moderate"
+        },
+        {
+          "dns_ip": "104.18.27.120",
+          "dns_ip_score": "Safe",
+          "port": "443",
+          "real_ip": "54.154.83.187",
+          "real_ip_score": "Low"
+        }
+      ],
+      "title": "Example Domain"
+    },
+    "mapped_ip": [
+      {
+        "as_name": "CLOUDFLARENET",
+        "country": "",
+        "ip": "172.66.147.243",
+        "score": "safe"
+      },
+      {
+        "as_name": "CLOUDFLARENET",
+        "country": "",
+        "ip": "104.20.23.154",
+        "score": "moderate"
+      }
+    ],
+    "network_logs": {
+      "abuse_record": {
+        "critical": 0,
+        "dangerous": 0
+      },
+      "data": [
+        {
+          "as_name": "CLOUDFLARENET",
+          "as_number": "13335",
+          "country": "",
+          "data_size": "212 B",
+          "frame_id": "368B6A228713443E6339146EDB95DABC",
+          "ip_port": "104.20.23.154:443",
+          "mime_type": "text/html",
+          "protocol": "h3",
+          "request": "GET",
+          "score": "moderate",
+          "time": "0.04 ms",
+          "transfer_size": "0 B",
+          "type": "Document",
+          "url": "https://example.com/"
+        },
+        {
+          "as_name": "CLOUDFLARENET",
+          "as_number": "13335",
+          "country": "",
+          "data_size": "218 B",
+          "frame_id": "368B6A228713443E6339146EDB95DABC",
+          "ip_port": "104.20.23.154:443",
+          "mime_type": "text/javascript",
+          "protocol": "h3",
+          "request": "GET",
+          "score": "moderate",
+          "time": "0.04 ms",
+          "transfer_size": "0 B",
+          "type": "Script",
+          "url": "https://example.com/s.js"
+        }
+      ]
+    },
+    "page_networking_info": {
+      "connected_countries": "",
+      "cookies": 0,
+      "encryption": "ecdsa-with-SHA256",
+      "https_percent": 100.0,
+      "tls_certificate": "",
+      "transaction_count": 2,
+      "transfer_traffic": "0 B"
+    },
+    "page_redirections": [],
+    "report_time": "2026-10-22 21:31:31",
+    "screenshots": [
+      "https://cip-web-screenshot-new.s3.us-west-1.amazonaws.com/domain/2026/10/73944665-example.com.png"
+    ],
+    "security_headers": [],
+    "ssl": false,
+    "ssl_detail": {
+      "forward_secrecy": {
+        "elliptic_curves_offered": "",
+        "finite_field_group": "",
+        "forward_secrecy": "",
+        "forward_secrecy_ciphers": ""
+      },
+      "headers": {
+        "cookies": "",
+        "hsts": "",
+        "security_headers": {
+          "cache_control": "",
+          "pragma": "",
+          "referrer_policy": "",
+          "x_frame_options": "",
+          "x_xss_protection": ""
+        }
+      },
+      "protocols": {
+        "deprecated_ssl_protocol_versions": {
+          "sslv2": "",
+          "sslv3": ""
+        },
+        "tls_warning": ""
+      },
+      "server_defaults": {
+        "chain_of_trust": [],
+        "dns_caa_record": [],
+        "server_key_size": [],
+        "tls_session_resumption": {
+          "id": "",
+          "tickets": ""
+        }
+      },
+      "version": 0.0,
+      "vulnerable": {
+        "beast": {
+          "tls1": "",
+          "value": ""
+        },
+        "breach_attacks": "",
+        "ccs_injection": "",
+        "client_initiated_ssl_renegotiation": "",
+        "crime_tls": "",
+        "drown": "",
+        "freak": "",
+        "heartbleed": "",
+        "logjam": "",
+        "lucky13": "",
+        "poodle": "",
+        "robot": "",
+        "ssl_rc4": "",
+        "ssl_renegotiation": "",
+        "sweet32": "",
+        "ticketbleed": "",
+        "tls_fallback_scsv": "",
+        "winshock": ""
+      }
+    },
+    "subdomains": [],
+    "summary": {
+      "abuse_record": {
+        "critical": 0,
+        "dangerous": 0
+      },
+      "associated_ip": "",
+      "connect_to_ip_directly": 0,
+      "cred_input": "Safe",
+      "dga_score": 0.0,
+      "diff_domain_favicon": "Suspicious",
+      "domain_in_subdomain": false,
+      "email_domain_check": false,
+      "fake_domain": false,
+      "fake_https_url": false,
+      "fake_ssl": {
+        "category": "",
+        "invalid": false
+      },
+      "hidden_element": 0,
+      "hidden_iframe": 0,
+      "iframe": 0,
+      "js_obfuscated": 0,
+      "list_of_countries": [],
+      "mail_server": false,
+      "mitm_attack": false,
+      "newborn_domain": "",
+      "overlong_domain": false,
+      "page_warning": false,
+      "phishing_record": 0,
+      "punycode": false,
+      "real_ip": 4,
+      "redirection_diff_asn": 0,
+      "redirection_diff_country": 0,
+      "redirection_diff_domain": 0,
+      "redirection_onclick": "Normal",
+      "sfh": "Safe",
+      "spf1": "N/A",
+      "suspicious_cookie": false,
+      "suspicious_element": 0,
+      "suspicious_file": 0,
+      "suspicious_footer": false,
+      "symbol_url": false,
+      "url_phishing_prob": 0.0,
+      "web_traffic": "180"
+    },
+    "technologies": [
+      {
+        "categories": [
+          "CDN"
+        ],
+        "name": "Cloudflare",
+        "version": null,
+        "vulner": []
+      },
+      {
+        "categories": [
+          "Miscellaneous"
+        ],
+        "name": "HTTP/3",
+        "version": null,
+        "vulner": []
+      }
+    ]
+  }
+}

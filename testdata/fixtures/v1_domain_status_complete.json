@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "message": "api success",
+  "data": {
+    "scan_percentage": 100
+  }
+}

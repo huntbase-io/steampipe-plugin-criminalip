@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "message": "api success",
+  "data": {
+    "query": "https://example.com",
+    "scan_id": 73944665
+  }
+}

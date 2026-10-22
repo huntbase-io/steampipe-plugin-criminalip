@@ -1,0 +1,160 @@
+{
+  "status": 200,
+  "ip": "185.220.101.1",
+  "timestamp": "2026-10-22 21:30:58",
+  "is_malicious": true,
+  "is_vpn": false,
+  "is_hosting": false,
+  "is_anonymous_vpn": false,
+  "can_remote_access": false,
+  "is_actor": false,
+  "std_info": {
+    "representative_domain": null,
+    "hostname": "berlin01.tor-exit.artikel10.org",
+    "hostname_dtime ": "2026-07-25 07:00:17",
+    "as_name": "stiftung erneuerbare freiheit",
+    "country": "Germany"
+  },
+  "actor": {
+    "count": 0,
+    "data": []
+  },
+  "current_opened_port": {
+    "count": 3,
+    "data": [
+      {
+        "socket_type": "tcp",
+        "port": 9004,
+        "protocol": null,
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-22 10:41:54",
+        "ssl_cert_name": "www.pwt6irj7co.com",
+        "ssl_etc_name": "",
+        "ssl_dtime": "2026-10-22 11:03:51",
+        "is_ssl_expired": false,
+        "is_ssl_selfsigned": false,
+        "tags": [],
+        "software": [],
+        "operating_systems": []
+      },
+      {
+        "socket_type": "tcp",
+        "port": 80,
+        "protocol": "http",
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-22 09:50:11",
+        "ssl_cert_name": null,
+        "ssl_etc_name": "",
+        "ssl_dtime": null,
+        "is_ssl_expired": true,
+        "is_ssl_selfsigned": false,
+        "tags": [],
+        "software": [
+          {
+            "product": "nginx",
+            "version": ""
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "socket_type": "tcp",
+        "port": 9003,
+        "protocol": null,
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-21 15:32:49",
+        "ssl_cert_name": "www.f2yybkqau3e2cjhv.com",
+        "ssl_etc_name": "",
+        "ssl_dtime": "2026-10-21 15:35:19",
+        "is_ssl_expired": false,
+        "is_ssl_selfsigned": false,
+        "tags": [],
+        "software": [],
+        "operating_systems": []
+      }
+    ]
+  },
+  "remote_port": {
+    "count": 0,
+    "data": []
+  },
+  "vulnerability": {
+    "count": 0,
+    "data": []
+  },
+  "ids": {
+    "count": 10,
+    "data": [
+      {
+        "classification": "tor",
+        "url": "www.dan.me.uk/torlist/",
+        "message": "ET TOR Known Tor Relay/Router (Not Exit) Node TCP Traffic group 26",
+        "source_system": "snort-2.9.0 11316",
+        "confirmed_time": "2026-10-22 03:09:54"
+      },
+      {
+        "classification": "3coresec",
+        "url": "blacklist.3coresec.net/lists/et-open.txt",
+        "message": "ET 3CORESec Poor Reputation IP UDP group 12",
+        "source_system": "./snort-2.9.0 10377",
+        "confirmed_time": "2023-07-25 01:15:42"
+      },
+      {
+        "classification": "compromised",
+        "url": "doc.emergingthreats.net/bin/view/Main/CompromisedHosts",
+        "message": "ET COMPROMISED Known Compromised or Hostile Host Traffic UDP group 52",
+        "source_system": "./snort-2.9.0 9781",
+        "confirmed_time": "2021-06-28 17:18:06"
+      }
+    ]
+  },
+  "scanning_record": {
+    "count": 20,
+    "data": [
+      {
+        "log_date": "Wed, 13 May 2026 00:00:00 GMT",
+        "dst_port": 80,
+        "protocol_type": "tcp",
+        "user_agent": "Wget/1.21.4 ( https://hmefb.fwh.is | HelpMeEscapeFromBelarus@proton.me)",
+        "message": "[13/May/2026:07:20:59] HEAD /?_HELP_ME_ESCAPE_FROM_BELARUS_PLEASE_ HTTP/1.1",
+        "confirmed_time": "2026-05-13 00:00:00"
+      },
+      {
+        "log_date": "Fri, 23 Jan 2026 00:00:00 GMT",
+        "dst_port": 443,
+        "protocol_type": "tcp",
+        "user_agent": "-",
+        "message": "[23/Jan/2026:17:45:13] TLS Handshake",
+        "confirmed_time": "2026-01-23 00:00:00"
+      },
+      {
+        "log_date": "Fri, 26 Dec 2025 00:00:00 GMT",
+        "dst_port": 443,
+        "protocol_type": "tcp",
+        "user_agent": "-",
+        "message": "[26/Dec/2025:04:07:19] TLS Handshake",
+        "confirmed_time": "2025-12-26 00:00:00"
+      }
+    ]
+  },
+  "ip_category": {
+    "count": 27,
+    "data": [
+      {
+        "type": "tor (Tor)",
+        "detect_source": "",
+        "confirmed_time": "2026-10-22 15:52:43"
+      },
+      {
+        "type": "MISP",
+        "detect_source": "",
+        "confirmed_time": "2026-10-20 16:39:04"
+      },
+      {
+        "type": "attack (Low)",
+        "detect_source": "C-TAS(N/A)",
+        "confirmed_time": "2026-05-31 05:47:46"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "status": 200,
+  "message": "api success",
+  "data": {
+    "count": 5519,
+    "reports": [
+      {
+        "connected_ip_cnt": 1,
+        "country_code": [
+          ""
+        ],
+        "file_exposure": [],
+        "issue": [
+          "list_of_countries",
+          "mail_server",
+          "diff_domain_favicon"
+        ],
+        "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+        "reg_dtime": "2026-10-22 16:17:08",
+        "scan_id": "73935155",
+        "score": "Safe",
+        "technologies": [
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/CloudFlare.svg",
+            "tech_name": "Cloudflare"
+          },
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/HTTP3.svg",
+            "tech_name": "HTTP/3"
+          }
+        ],
+        "title": "Example Domain",
+        "url": "https://example.com"
+      },
+      {
+        "connected_ip_cnt": 1,
+        "country_code": [
+          ""
+        ],
+        "file_exposure": [],
+        "issue": [
+          "list_of_countries",
+          "mail_server",
+          "diff_domain_favicon"
+        ],
+        "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+        "reg_dtime": "2026-10-22 16:01:54",
+        "scan_id": "73934821",
+        "score": "Safe",
+        "technologies": [
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/CloudFlare.svg",
+            "tech_name": "Cloudflare"
+          },
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/HTTP3.svg",
+            "tech_name": "HTTP/3"
+          }
+        ],
+        "title": "Example Domain",
+        "url": "https://example.com"
+      },
+      {
+        "connected_ip_cnt": 1,
+        "country_code": [
+          ""
+        ],
+        "file_exposure": [],
+        "issue": [
+          "list_of_countries",
+          "mail_server",
+          "diff_domain_favicon"
+        ],
+        "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+        "reg_dtime": "2026-10-22 11:31:02",
+        "scan_id": "73919657",
+        "score": "Safe",
+        "technologies": [
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/CloudFlare.svg",
+            "tech_name": "Cloudflare"
+          },
+          {
+            "logo_url": "https://cip-live-image.s3.us-west-1.amazonaws.com/tech/HTTP3.svg",
+            "tech_name": "HTTP/3"
+          }
+        ],
+        "title": "Example Domain",
+        "url": "https://example.com"
+      }
+    ]
+  }
+}

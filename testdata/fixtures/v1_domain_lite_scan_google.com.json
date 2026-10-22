@@ -1,0 +1,8 @@
+{
+  "data": {
+    "query": "https://google.com",
+    "scan_id": "eb9ba96b2d5a4948ab049c2074caa129"
+  },
+  "message": "api success",
+  "status": 200
+}

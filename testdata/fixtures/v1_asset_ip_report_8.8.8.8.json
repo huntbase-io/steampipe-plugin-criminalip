@@ -1,0 +1,212 @@
+{
+  "ip": "8.8.8.8",
+  "issues": {
+    "is_vpn": false,
+    "is_cloud": true,
+    "is_tor": false,
+    "is_proxy": false,
+    "is_hosting": true,
+    "is_mobile": false,
+    "is_darkweb": false,
+    "is_scanner": false,
+    "is_snort": false,
+    "is_anonymous_vpn": false
+  },
+  "score": {
+    "inbound": "Safe",
+    "outbound": "Safe"
+  },
+  "user_search_count": 80,
+  "protected_ip": {
+    "count": 0,
+    "data": []
+  },
+  "domain": {
+    "count": 20,
+    "data": [
+      {
+        "domain": "test.qvs.bm",
+        "ip_type": "company",
+        "registrar": "",
+        "create_date": "",
+        "confirmed_time": "2026-10-22 15:06:43",
+        "email": ""
+      },
+      {
+        "domain": "theordinary.ma",
+        "ip_type": "Unknown",
+        "registrar": "none",
+        "create_date": "2026-08-23 00:00:00",
+        "confirmed_time": "2026-08-23 06:04:20",
+        "email": ""
+      },
+      {
+        "domain": "mobileappsoft.com",
+        "ip_type": "Unknown",
+        "registrar": "none",
+        "create_date": "2026-08-22 00:00:00",
+        "confirmed_time": "2026-08-21 18:57:18",
+        "email": ""
+      }
+    ]
+  },
+  "whois": {
+    "count": 1,
+    "data": [
+      {
+        "as_name": "Google LLC",
+        "as_no": 15169,
+        "city": null,
+        "region": null,
+        "org_name": "Google",
+        "postal_code": null,
+        "latitude": 37.751,
+        "longitude": -97.822,
+        "org_country_code": "us",
+        "confirmed_time": "2026-10-22 00:00:00"
+      }
+    ]
+  },
+  "hostname": {
+    "count": 1,
+    "data": [
+      {
+        "domain_name_rep": "dns.google",
+        "domain_name_full": "dns.google",
+        "confirmed_time": "2026-08-31 08:09:54"
+      }
+    ]
+  },
+  "ids": {
+    "count": 4,
+    "data": [
+      {
+        "classification": "trojan",
+        "url": "www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/tortoise-and-malwahare.html",
+        "message": "ET TROJAN Observed Teal Kurma Domain (lo0 .systemctl .network in TLS SNI)",
+        "source_system": "./snort-2.9.0 10519",
+        "confirmed_time": "2024-01-31 16:13:58"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (bitscrunch .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:52"
+      },
+      {
+        "classification": "current_events",
+        "url": "twitter.com/SlowMist_Team/status/1732311816557269067",
+        "message": "ET CURRENT_EVENTS TA444 Domain in TLS SNI (naverk .myvnc .com)",
+        "source_system": "./snort-2.9.0 10484",
+        "confirmed_time": "2023-12-14 05:31:47"
+      }
+    ]
+  },
+  "vpn": {
+    "count": 0,
+    "data": []
+  },
+  "anonymous_vpn": {
+    "count": 0,
+    "data": []
+  },
+  "webcam": {
+    "count": 0,
+    "data": []
+  },
+  "honeypot": {
+    "count": 0,
+    "data": []
+  },
+  "ip_category": {
+    "count": 20,
+    "data": [
+      {
+        "detect_source": "Google",
+        "type": "cloud service",
+        "detect_info": {},
+        "confirmed_time": "2026-10-22 19:09:12"
+      },
+      {
+        "detect_source": "",
+        "type": "reputation",
+        "detect_info": {},
+        "confirmed_time": "2026-10-22 15:18:04"
+      },
+      {
+        "detect_source": "",
+        "type": "MISP",
+        "detect_info": {
+          "domain": "8.8.8.8/"
+        },
+        "confirmed_time": "2026-10-22 05:27:24"
+      }
+    ]
+  },
+  "port": {
+    "count": 20,
+    "data": [
+      {
+        "app_name": "httpd",
+        "app_version": "Unknown",
+        "banner": "HTTP/2.0\nStatus: 200 OK\nCache Control: public, max-age=300\nContent Type: text/html; charset=UTF-8\nExpires: Thu, 22 Oct 2026 17:35:16 GMT\nServer: scaffolding on HTTPServer2\nX Content Type Options: nosniff\nX Frame Options: SAMEORIGIN\nX Xss Protection: 0\n\n<!DOCTYPE html>\n<html lang=\"en\"> <head> <title>Google Public DNS</title>  <meta charset=\"UTF-8\"> <link href=\"/static/93dd5954/favicon.png\" rel=\"shortcut icon\" type=\"image/png\"> <link href=\"/static/e6eca759/matter.min.css\" rel=\"stylesheet\"> <link href=\"/static/b8536c37/shared.css\" rel=\"stylesheet\"> <meta name=\"viewport\" content=\"width=device-widt...[truncated 3758 chars]",
+        "open_port_no": 443,
+        "port_status": "open",
+        "protocol": "HTTPS",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": "*.dns.google.com, 8.8.4.4, 8.8.8.53, 8.8.8.8, 8888.google, dns.google, dns.google.com, dns64.dns.google",
+        "sdn_common_name": "dns.google",
+        "jarm_hash": "29d3fd00029d29d00042d43d00041d8f924f5255cbc229bc55efa16391dad6",
+        "ssl_info_raw": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 119760305370515512493719377464821648688\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: WR2\n\tCountry: US\n\tOrganization: Google Trust Services\nIssuer Dn: C=US, O=Google Trust Services, CN=WR2\nValidity:\n\tEnd: 2026-12-11T20:02:28Z\n\tLength: 7.257599e+06\n\tStart: 2026-09-18T20:02:29Z\nSubject:\n\tCommon Name: dns.google\nSubject Dn: CN=dns.google\nSubject Key Info:\n\tFingerprint Sha256: 94e2eeab5836c21ea772a00e89b7ddaa43203f581e639ae26a3353dc0b7d7c48\n\tKey Algorithm:\n\t\tName: RSA\n\tRsa Public Key:\n\t\tExponent: 65537\n\t\tLength:...[truncated 2124 chars]",
+        "technologies": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 17:33:04"
+      },
+      {
+        "app_name": "Unknown",
+        "app_version": "Unknown",
+        "banner": "\n  Recursion: enabled",
+        "open_port_no": 53,
+        "port_status": "open",
+        "protocol": "DNS",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": null,
+        "sdn_common_name": null,
+        "jarm_hash": null,
+        "ssl_info_raw": null,
+        "technologies": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-10 04:30:01"
+      },
+      {
+        "app_name": "httpd",
+        "app_version": "Unknown",
+        "banner": "HTTP/2.0\nStatus: 200 OK\nCache Control: public, max-age=300\nContent Type: text/html; charset=UTF-8\nExpires: Tue, 29 Sep 2026 06:45:09 GMT\nServer: scaffolding on HTTPServer2\nX Content Type Options: nosniff\nX Frame Options: SAMEORIGIN\nX Xss Protection: 0\n\n<!DOCTYPE html>\n<html lang=\"en\"> <head> <title>Google Public DNS</title>  <meta charset=\"UTF-8\"> <link href=\"/static/93dd5954/favicon.png\" rel=\"shortcut icon\" type=\"image/png\"> <link href=\"/static/e6eca759/matter.min.css\" rel=\"stylesheet\"> <link href=\"/static/b8536c37/shared.css\" rel=\"stylesheet\"> <meta name=\"viewport\" content=\"width=device-widt...[truncated 3758 chars]",
+        "open_port_no": 443,
+        "port_status": "open",
+        "protocol": "HTTPS",
+        "socket": "tcp",
+        "tags": [],
+        "dns_names": "*.dns.google.com, 8.8.4.4, 8.8.8.53, 8.8.8.8, 8888.google, dns.google, dns.google.com, dns64.dns.google",
+        "sdn_common_name": "dns.google",
+        "jarm_hash": "29d3fd00029d29d00042d43d00041d8f924f5255cbc229bc55efa16391dad6",
+        "ssl_info_raw": "\n\nTLS Certificate\nVersion: 3\nSerial Number: 119760305370515512493719377464821648688\nSignature Algorithm:\n\tName: SHA256-RSA\n\tOid: 1.2.840.113549.1.1.11\nIssuer:\n\tCommon Name: WR2\n\tCountry: US\n\tOrganization: Google Trust Services\nIssuer Dn: C=US, O=Google Trust Services, CN=WR2\nValidity:\n\tEnd: 2026-12-11T20:02:28Z\n\tLength: 7.257599e+06\n\tStart: 2026-09-18T20:02:29Z\nSubject:\n\tCommon Name: dns.google\nSubject Dn: CN=dns.google\nSubject Key Info:\n\tFingerprint Sha256: 94e2eeab5836c21ea772a00e89b7ddaa43203f581e639ae26a3353dc0b7d7c48\n\tKey Algorithm:\n\t\tName: RSA\n\tRsa Public Key:\n\t\tExponent: 65537\n\t\tLength:...[truncated 2124 chars]",
+        "technologies": [],
+        "is_vulnerability": null,
+        "confirmed_time": "2026-09-29 06:44:06"
+      }
+    ]
+  },
+  "vulnerability": {
+    "count": 0,
+    "data": []
+  },
+  "mobile": {
+    "count": 0,
+    "data": []
+  },
+  "status": 200
+}

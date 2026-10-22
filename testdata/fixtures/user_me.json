@@ -1,0 +1,13 @@
+{
+  "data": {
+    "account_type": "google_social",
+    "api_key": "<REDACTED>",
+    "company_name": "ExampleCo",
+    "email": "user@example.com",
+    "last_access_date": "2026-10-22 00:00:00",
+    "membership_date": "2026-10-19 05:30:00",
+    "name": "user@example.com"
+  },
+  "message": "success",
+  "status": 200
+}

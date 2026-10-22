@@ -1,0 +1,70 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "groups": [
+      {
+        "keywords": [],
+        "filters": [
+          {
+            "key": "product",
+            "value": "OpenSSH",
+            "negate": false
+          },
+          {
+            "key": "port",
+            "value": "22",
+            "negate": false
+          },
+          {
+            "key": "country",
+            "value": "KR",
+            "negate": false
+          }
+        ]
+      }
+    ],
+    "count": 283716,
+    "result": {
+      "country_agg": [
+        {
+          "key": "kr",
+          "doc_count": 283716
+        }
+      ],
+      "as_name_agg": [
+        {
+          "key": "oracle corporation",
+          "doc_count": 60562
+        },
+        {
+          "key": "amazon.com, inc.",
+          "doc_count": 42171
+        },
+        {
+          "key": "tencent building, kejizhongyi avenue",
+          "doc_count": 33750
+        }
+      ],
+      "port_agg": [
+        {
+          "key": "22",
+          "doc_count": 283716
+        }
+      ],
+      "service_name_agg": [
+        {
+          "key": "ssh",
+          "doc_count": 283716
+        }
+      ],
+      "product_agg": [
+        {
+          "key": "openssh",
+          "doc_count": 283716
+        }
+      ],
+      "favicons_agg": []
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ip": "8.8.8.8",
+  "is_hosting": true,
+  "hosting_info": {
+    "as_name_include_hosting_or_cloud": "",
+    "domain_exist_more_than_5": [],
+    "cloud_ip_range_matching": {
+      "ip_range": "8.8.8.0/24",
+      "cloud_service": "Google"
+    }
+  },
+  "status": 200
+}

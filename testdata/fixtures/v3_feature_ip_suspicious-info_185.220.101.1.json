@@ -1,0 +1,106 @@
+{
+  "status": 200,
+  "ip": "185.220.101.1",
+  "timestamp": "2026-10-22 21:30:58",
+  "score": {
+    "inbound": "Critical",
+    "outbound": "Moderate"
+  },
+  "issues": {
+    "is_vpn": false,
+    "is_anonymous_vpn": false,
+    "is_cloud": false,
+    "is_tor": true,
+    "is_proxy": false,
+    "is_hosting": false,
+    "is_mobile": false,
+    "is_darkweb": false,
+    "is_scanner": false,
+    "is_snort": true
+  },
+  "representative_domain": "",
+  "abuse_record_count": 37,
+  "whois": {
+    "count": 1,
+    "data": [
+      {
+        "as_name": "Stiftung Erneuerbare Freiheit",
+        "as_no": 60729,
+        "city": "Brandenburg an der Havel",
+        "region": "Brandenburg",
+        "org_name": "Stiftung Erneuerbare Freiheit",
+        "postal_code": "14621",
+        "latitude": 52.6171,
+        "longitude": 13.1207,
+        "org_country_code": "de",
+        "confirmed_time": "2026-10-22 00:00:00"
+      }
+    ]
+  },
+  "ids": {
+    "count": 10,
+    "data": [
+      {
+        "classification": "tor",
+        "url": "www.dan.me.uk/torlist/",
+        "message": "ET TOR Known Tor Relay/Router (Not Exit) Node TCP Traffic group 26",
+        "source_system": "snort-2.9.0 11316",
+        "confirmed_time": "2026-10-22 03:09:54"
+      },
+      {
+        "classification": "3coresec",
+        "url": "blacklist.3coresec.net/lists/et-open.txt",
+        "message": "ET 3CORESec Poor Reputation IP UDP group 12",
+        "source_system": "./snort-2.9.0 10377",
+        "confirmed_time": "2023-07-25 01:15:42"
+      },
+      {
+        "classification": "compromised",
+        "url": "doc.emergingthreats.net/bin/view/Main/CompromisedHosts",
+        "message": "ET COMPROMISED Known Compromised or Hostile Host Traffic UDP group 52",
+        "source_system": "./snort-2.9.0 9781",
+        "confirmed_time": "2021-06-28 17:18:06"
+      }
+    ]
+  },
+  "current_opened_port": {
+    "count": 3,
+    "data": [
+      {
+        "port": 9004,
+        "socket_type": "tcp",
+        "protocol": "",
+        "tags": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 10:41:54",
+        "software": [],
+        "operating_systems": []
+      },
+      {
+        "port": 80,
+        "socket_type": "tcp",
+        "protocol": "HTTP",
+        "tags": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-22 09:50:11",
+        "software": [
+          {
+            "product": "nginx",
+            "version": ""
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "port": 9003,
+        "socket_type": "tcp",
+        "protocol": "",
+        "tags": [],
+        "is_vulnerability": false,
+        "confirmed_time": "2026-10-21 15:32:49",
+        "software": [],
+        "operating_systems": []
+      }
+    ]
+  }
+}

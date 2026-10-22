@@ -1,0 +1,49 @@
+{
+  "status": 200,
+  "ip": "8.8.8.8",
+  "timestamp": "2026-10-22 21:28:48",
+  "webcam": {
+    "count": 0,
+    "data": []
+  },
+  "iot": {
+    "count": 0,
+    "data": []
+  },
+  "admin_page": {
+    "count": 0,
+    "data": []
+  },
+  "nas": {
+    "count": 0,
+    "data": []
+  },
+  "other_ports": {
+    "count": 2,
+    "data": [
+      {
+        "socket_type": "tcp",
+        "port": 443,
+        "protocol": "https",
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-22 17:33:04",
+        "software": [
+          {
+            "product": "httpd",
+            "version": ""
+          }
+        ],
+        "operating_systems": []
+      },
+      {
+        "socket_type": "tcp",
+        "port": 53,
+        "protocol": "dns",
+        "has_vulnerability": false,
+        "confirmed_time": "2026-10-10 04:30:01",
+        "software": [],
+        "operating_systems": []
+      }
+    ]
+  }
+}
