@@ -1,6 +1,6 @@
 module github.com/huntbase-io/steampipe-plugin-criminalip
 
-go 1.27.2
+go 1.26.0
 
 require github.com/turbot/steampipe-plugin-sdk/v5 v5.14.1
 
