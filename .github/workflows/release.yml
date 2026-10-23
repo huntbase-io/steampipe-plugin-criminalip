@@ -98,9 +98,20 @@ jobs:
           cache-dependency-path: go.sum
 
       - name: Build SQLite extension
+        run: make sqlite
+
+      # Re-run only the final go build for the target architecture. Done here,
+      # not with the Makefile's SQLITE_BUILD_ENV, so that a manual run for an
+      # older tag (whose Makefile lacks it) still cross-compiles.
+      - name: Cross-compile
+        if: matrix.cross
         env:
-          SQLITE_BUILD_ENV: ${{ matrix.build_env }}
-        run: make sqlite SQLITE_BUILD_ENV="$SQLITE_BUILD_ENV"
+          BUILD_ENV: ${{ matrix.build_env }}
+        run: |
+          cd build/steampipe-sqlite
+          rm -f steampipe_sqlite_criminalip.so
+          eval "env $BUILD_ENV make -f out/Makefile build"
+          cp steampipe_sqlite_criminalip.so ../../steampipe_sqlite_criminalip.so
 
       - name: Check the architecture
         if: matrix.cross
