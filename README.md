@@ -111,6 +111,10 @@ Run the unit tests. They use the recorded API responses in `testdata/fixtures` a
 make test
 ```
 
+CI runs the build, `go vet`, golangci-lint, the unit tests and govulncheck on every push and pull request. A weekly workflow also runs a few queries against the live API (see `.github/workflows/live-api-check.yml`); it needs the `CRIMINALIP_API_KEY` repository secret.
+
+To cut a release, or to install a prebuilt binary from one, see [RELEASING.md](RELEASING.md).
+
 ### Layout
 
 - `apiclient/`: a small, dependency-free client for the Criminal IP API. It covers auth, body-status error mapping, Cloudflare and HTML handling, flexible JSON types and bounded pagination. See the package documentation.

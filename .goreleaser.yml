@@ -1,0 +1,51 @@
+# Release builds, following Turbot's Steampipe plugin convention
+# (for example turbot/steampipe-plugin-shodan/.goreleaser.yml): one gzipped
+# plugin binary per OS/arch plus a SHA256 checksum file. See RELEASING.md.
+version: 2
+
+project_name: steampipe-plugin-criminalip
+
+before:
+  hooks:
+    # Fail instead of rewriting go.mod/go.sum during a release.
+    - go mod tidy -diff
+
+builds:
+  - id: steampipe
+    binary: "{{ .ProjectName }}.plugin"
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -tags=netgo
+      - -trimpath
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  # A bare gzip of the binary, no tarball: steampipe-plugin-criminalip_linux_amd64.gz
+  - formats: [gz]
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - none*
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
+  algorithm: sha256
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+release:
+  prerelease: auto
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
