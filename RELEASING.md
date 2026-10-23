@@ -20,7 +20,8 @@ Releases are built by [GoReleaser](https://goreleaser.com) from `.goreleaser.yml
    | `steampipe-plugin-criminalip_linux_arm64.gz` | Linux ARM64 plugin binary |
    | `steampipe-plugin-criminalip_darwin_amd64.gz` | macOS Intel plugin binary |
    | `steampipe-plugin-criminalip_darwin_arm64.gz` | macOS Apple silicon plugin binary |
-   | `steampipe-plugin-criminalip_<version>_SHA256SUMS` | SHA-256 checksums of the files above |
+   | `steampipe-plugin-criminalip_<version>_SHA256SUMS` | SHA-256 checksums of the plugin binaries above |
+   | `steampipe_sqlite_criminalip.{linux_amd64,linux_arm64,darwin_arm64}.tar.gz` | SQLite extension (`make sqlite`), uploaded by the `sqlite` jobs after GoReleaser finishes |
 
    Tags with a pre-release suffix, such as `v0.2.0-rc.1`, are published as pre-releases.
 

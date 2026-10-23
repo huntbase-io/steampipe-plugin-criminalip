@@ -48,3 +48,62 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  sqlite:
+    # SQLite extension assets, as published by huntbase-io/steampipe-plugin-anthropic.
+    # hb-backend's steampipe-util.sh downloads steampipe_sqlite_<name>.<arch>.tar.gz
+    # from this release on platforms the huntbase-io/steampipe-sqlite release
+    # doesn't cover (linux_amd64 comes from that fork's release instead).
+    name: SQLite extension (${{ matrix.label }})
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            label: linux_amd64
+          - runner: ubuntu-24.04-arm
+            label: linux_arm64
+          # darwin_amd64 omitted: GitHub retired the Intel macOS runners.
+          # Intel Mac users can build it locally with `make sqlite`.
+          - runner: macos-latest
+            label: darwin_arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    permissions:
+      contents: write # upload release assets
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          check-latest: true
+          cache-dependency-path: go.sum
+
+      - name: Build SQLite extension
+        run: make sqlite
+
+      - name: Check it loads
+        run: |
+          python3 -I -c "
+          import sqlite3
+          c = sqlite3.connect(':memory:')
+          if not hasattr(c, 'enable_load_extension'):
+              print('this Python cannot load SQLite extensions; skipping'); raise SystemExit(0)
+          c.enable_load_extension(True)
+          c.load_extension('./steampipe_sqlite_criminalip')
+          n = c.execute(\"select count(*) from pragma_module_list where name like 'criminalip%'\").fetchone()[0]
+          assert n > 0, 'no criminalip tables registered'
+          print(n, 'tables')"
+
+      - name: Package and upload
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+          ARCHIVE: steampipe_sqlite_criminalip.${{ matrix.label }}.tar.gz
+        run: |
+          tar -czf "$ARCHIVE" steampipe_sqlite_criminalip.so
+          gh release upload "$TAG" "$ARCHIVE" --clobber -R "$GITHUB_REPOSITORY"

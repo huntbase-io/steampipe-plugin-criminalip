@@ -24,3 +24,6 @@ dist/
 .idea/
 .vscode/
 .DS_Store
+
+# SQLite extension build tree (make sqlite)
+/build/
