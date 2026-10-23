@@ -18,6 +18,9 @@ reconfigure:
 # assets; Huntbase's platform builds of linux_amd64 come from the fork itself.
 STEAMPIPE_SQLITE_REPO ?= https://github.com/huntbase-io/steampipe-sqlite.git
 STEAMPIPE_SQLITE_REF ?= d0ceab74e97c2a7d58219022a26e8ec7e512fd43
+# Extra environment for the final `go build` only, for cross-compiling, e.g.
+#   make sqlite SQLITE_BUILD_ENV="GOARCH=amd64 CGO_ENABLED=1 CC='clang -arch x86_64'"
+SQLITE_BUILD_ENV ?=
 
 sqlite:
 	rm -rf build/steampipe-sqlite && mkdir -p build
@@ -28,7 +31,7 @@ sqlite:
 		go mod edit -require=github.com/huntbase-io/steampipe-plugin-criminalip@v0.0.0 \
 			-replace=github.com/huntbase-io/steampipe-plugin-criminalip=$(CURDIR) && \
 		go mod tidy && \
-		$(MAKE) -f out/Makefile build
+		env $(SQLITE_BUILD_ENV) $(MAKE) -f out/Makefile build
 	cp build/steampipe-sqlite/steampipe_sqlite_criminalip.so .
 	@echo "Built ./steampipe_sqlite_criminalip.so"
 
