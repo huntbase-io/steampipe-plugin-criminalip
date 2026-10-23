@@ -1,0 +1,119 @@
+name: Live API check
+
+# Weekly smoke test against the real Criminal IP API: builds the plugin,
+# installs it into a throwaway Steampipe install and runs five small queries
+# (about 6 API calls). Needs the CRIMINALIP_API_KEY repository secret and
+# skips with a notice when it is missing. Never runs on pull requests.
+
+on:
+  schedule:
+    # Mondays 06:00 UTC. huntbase-io/stix-shifter-criminalip runs at 08:00 UTC:
+    # Criminal IP allows one concurrent call per key, so keep the two apart.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-api-check
+  cancel-in-progress: false
+
+env:
+  GO_VERSION: "1.26.x"
+  STEAMPIPE_VERSION: "v2.4.7"
+
+jobs:
+  live-check:
+    name: Query the live API
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check for the API key
+        id: key
+        env:
+          CRIMINALIP_API_KEY: ${{ secrets.CRIMINALIP_API_KEY }}
+        run: |
+          if [ -z "${CRIMINALIP_API_KEY}" ]; then
+            echo "::notice title=Live API check skipped::The CRIMINALIP_API_KEY secret is not set, so no API calls were made. Add it with: gh secret set CRIMINALIP_API_KEY -R ${GITHUB_REPOSITORY}"
+            echo "present=false" >> "${GITHUB_OUTPUT}"
+          else
+            echo "::add-mask::${CRIMINALIP_API_KEY}"
+            echo "present=true" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.key.outputs.present == 'true'
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        if: steps.key.outputs.present == 'true'
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: go.sum
+
+      - name: Install Steampipe
+        if: steps.key.outputs.present == 'true'
+        run: |
+          dir="${RUNNER_TEMP}/steampipe-bin"
+          mkdir -p "${dir}"
+          cd "${dir}"
+          base="https://github.com/turbot/steampipe/releases/download/${STEAMPIPE_VERSION}"
+          curl -sSLf --retry 3 -o steampipe_linux_amd64.tar.gz "${base}/steampipe_linux_amd64.tar.gz"
+          curl -sSLf --retry 3 -o checksums.txt "${base}/checksums.txt"
+          grep ' steampipe_linux_amd64.tar.gz$' checksums.txt | sha256sum -c -
+          tar -xzf steampipe_linux_amd64.tar.gz steampipe
+          echo "${dir}" >> "${GITHUB_PATH}"
+
+      - name: Build and install the plugin
+        if: steps.key.outputs.present == 'true'
+        run: |
+          export STEAMPIPE_INSTALL_DIR="${RUNNER_TEMP}/steampipe"
+          echo "STEAMPIPE_INSTALL_DIR=${STEAMPIPE_INSTALL_DIR}" >> "${GITHUB_ENV}"
+          mkdir -p "${STEAMPIPE_INSTALL_DIR}/config"
+          make install
+          # Keyless connection: the plugin reads CRIMINALIP_API_KEY from the environment.
+          cat > "${STEAMPIPE_INSTALL_DIR}/config/criminalip.spc" <<'EOF'
+          connection "criminalip" {
+            plugin = "local/criminalip"
+          }
+          EOF
+          steampipe --version
+
+      - name: Run live queries
+        if: steps.key.outputs.present == 'true'
+        env:
+          CRIMINALIP_API_KEY: ${{ secrets.CRIMINALIP_API_KEY }}
+          STEAMPIPE_UPDATE_CHECK: "false"
+          STEAMPIPE_TELEMETRY: "none"
+        run: .github/scripts/live-api-check.sh
+
+  report:
+    name: Report API drift
+    needs: live-check
+    if: failure() && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write # open or update the api-drift issue
+    steps:
+      - name: Open or update the api-drift issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create api-drift --color D93F0B \
+            --description "The weekly live Criminal IP API check failed" --force
+          body="The weekly live API check failed: ${RUN_URL}"
+          number="$(gh issue list --label api-drift --state open --limit 1 --json number --jq '.[0].number // empty')"
+          if [ -n "${number}" ]; then
+            gh issue comment "${number}" --body "${body}"
+          else
+            gh issue create --label api-drift \
+              --title "Live Criminal IP API check failed" \
+              --body "${body}
+
+          The Criminal IP API may have changed, or the CRIMINALIP_API_KEY secret may be invalid or out of credits. Later failures are added to this issue as comments. Close it once the check passes again."
+          fi
