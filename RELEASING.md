@@ -33,7 +33,7 @@ goreleaser release --snapshot --clean   # artifacts land in dist/
 
 ## Install a downloaded binary
 
-Until the plugin is on the Steampipe Hub, install a release binary as a local plugin. For example, on Linux x86-64 (the repository is private, so download with `gh`):
+Until the plugin is on the Steampipe Hub, install a release binary as a local plugin. For example, on Linux x86-64 (with `gh`, or from the release page):
 
 ```sh
 VERSION=v0.1.0

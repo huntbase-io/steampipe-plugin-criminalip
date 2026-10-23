@@ -1,4 +1,6 @@
-## v0.1.0 [unreleased]
+## v0.1.0 [2026-10-23]
+
+First release.
 
 _What's new?_
 
@@ -22,3 +24,14 @@ _What's new?_
   - [criminalip_ip_suspicious](docs/tables/criminalip_ip_suspicious.md)
   - [criminalip_ip_vpn](docs/tables/criminalip_ip_vpn.md)
   - [criminalip_ip_vulnerability](docs/tables/criminalip_ip_vulnerability.md)
+
+_Enhancements_
+
+- API requests are serialised per API key (Criminal IP rejects concurrent calls with the same key), retried with backoff on HTTP 429/5xx and on the API's "unable to call api at the same time" response, and redirects to other hosts are refused.
+- Search tables stop at `min(limit, max_search_results)` (100 by default), because every page of results costs API credits.
+- `criminalip_ip_report`, `criminalip_ip_port` and `criminalip_ip_vulnerability` share one cached report call per IP. `full_report` defaults to `true`, because the API otherwise caps each section at 20 items.
+
+_Bug fixes_
+
+- `scan_dtime` in `criminalip_banner_search` and `criminalip_asset_search` is converted from KST to UTC.
+- Missing location fields in `criminalip_ip` are returned as null instead of empty strings.
