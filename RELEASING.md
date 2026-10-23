@@ -58,3 +58,11 @@ connection "criminalip" {
 ```
 
 If you use a non-default `STEAMPIPE_INSTALL_DIR`, replace `~/.steampipe` with it. Restart Steampipe (`steampipe service restart`) if it is running.
+
+## Rebuild a missing SQLite asset
+
+If a `sqlite` job fails, fix it on `main`, then run the Release workflow by hand for the existing tag. It skips GoReleaser and uploads only the SQLite archives the release is missing; attached assets are never replaced:
+
+```sh
+gh workflow run release.yml -R huntbase-io/steampipe-plugin-criminalip -f tag=v0.1.0
+```
