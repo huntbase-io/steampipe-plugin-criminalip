@@ -51,6 +51,7 @@ jobs:
         if: steps.key.outputs.present == 'true'
         with:
           go-version: ${{ env.GO_VERSION }}
+          check-latest: true # use the newest patch, not the runner's cached one
           cache-dependency-path: go.sum
 
       - name: Install Steampipe
