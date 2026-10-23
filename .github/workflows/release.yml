@@ -35,6 +35,7 @@ jobs:
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: ${{ env.GO_VERSION }}
+          check-latest: true # use the newest patch, not the runner's cached one
           cache-dependency-path: go.sum
 
       - name: Test
