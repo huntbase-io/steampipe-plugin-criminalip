@@ -1,10 +1,10 @@
 # Support Policy and Guidelines
 
-Generally, the best place to start will be the
-[Discussions](https://github.com/huntbase-io/steampipe-plugin-criminalip/discussions/new/choose)
-forum or through the Steampipe Slack community. If you can't find what you're
-looking for there, consider raising an
-[issue](https://github.com/huntbase-io/steampipe-plugin-criminalip/issues/new/choose)
+For bugs and feature requests in this plugin, open an
+[issue](https://github.com/huntbase-io/steampipe-plugin-criminalip/issues/new/choose).
+For general Steampipe questions, use the
+[Steampipe community](https://turbot.com/community/join). Report security
+issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## Criminal IP API Version
 

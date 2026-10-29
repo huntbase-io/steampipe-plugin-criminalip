@@ -1,113 +1,43 @@
-# Security Policy and Procedures
+# Security policy
 
-Our security policies and procedures for this project are outlined below. Broadly,
-we wish to avoid leaving the ecosystem worse than we found it.
+## Reporting a vulnerability
 
-## Supported Versions
+Please report vulnerabilities privately through GitHub's
+[private vulnerability reporting](https://github.com/huntbase-io/steampipe-plugin-criminalip/security/advisories/new)
+("Report a vulnerability" on the repository's **Security** tab). Do not open a
+public issue or pull request for a suspected vulnerability.
 
-Any issues with minor versions will be investigated whilst this project is in early
-development, however we may recommend updated to the latest pre-v1.0 version.
+Include the plugin version (`steampipe plugin list`, or the commit), how you
+run it (Steampipe or the SQLite extension), and steps to reproduce. We will
+acknowledge your report within 5 working days, keep you updated while we look
+into it, and credit you in the advisory unless you prefer otherwise.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| < 1.0   | :white_check_mark: |
+Security fixes are made on the latest release only.
 
-## Reporting a Bug or Vulnerability
+## Scope
 
-We take all security bugs in our projects seriously. Thank you for improving the
-security of them. We appreciate your efforts and responsible disclosure, and will
-make every effort to acknowledge your contributions. At this time we do not run
-a formal bug bounty programme.
+The plugin queries the Criminal IP API with the key you configure and returns
+the results as tables. In scope are issues in the plugin itself, for example:
 
-Report security bugs by emailing the lead maintainer at
-[security@ghuntbase.io][security].
+- the API key (`api_key` or `CRIMINALIP_API_KEY`) leaking into query results,
+  logs, error messages or anywhere other than requests to the Criminal IP API;
+- the plugin sending the key or a request to a host other than the Criminal IP
+  API, for example by following a redirect off that host;
+- a qualifier or other query input changing an API request in a way the table
+  does not document;
+- vulnerabilities in `apiclient/`, or in the published plugin binaries and
+  SQLite extension assets.
 
-They will acknowledge your email within 72 hours, and will send a more detailed
-response within a further 72 hours indicating the next steps in handling your
-report. After the initial reply to your report, we will endeavor to keep you
-informed of the progress towards a fix and full announcement, and may ask for
-additional information or guidance.
+Vulnerabilities in the Criminal IP API or service should be reported to AI
+Spera, which runs Criminal IP. Issues in Steampipe or the Steampipe plugin SDK
+should be reported to [Turbot](https://github.com/turbot).
 
-Report security bugs in third-party modules should be to the person or team
-maintaining said module.
+## Using the plugin safely
 
-## Disclosure Policy
+**Treat the API key as a credential.** Prefer the `CRIMINALIP_API_KEY`
+environment variable to writing the key into `criminalip.spc`, and keep that
+file out of version control.
 
-We are advocates of [responsible vulnerability disclosure][disclosure]. If you’ve
-found a vulnerability, we would like to know so we can fix it.
-
-Disclosures should be sent to [security@huntbase.io][security], including:
-
-- Your name and affiliation
-- Sufficient details of the vulnerability to allow it to be understood and
-  reproduced; this would include the website, page or repository where the
-  vulnerability can be observed
-- Optionally, the type of vulnerability and any related [OWASP category][category]
-- Relevant HTTP requests and responses, HTML snippets, screenshots or any other
-  supporting evidence. Redact any personal data before reporting
-- Proof of concept code (if available), or non-destructive exploitation details
-- The impact of the vulnerability
-- Any references or further reading that may be appropriate
-
-Our investigation process is straight-forward. We will work to:
-
-- Confirm the problem and determine the affected versions.
-- Audit code to find any potential similar problems.
-- Prepare fixes for all releases still under maintenance
-
-## Security Checklist and Recommendations
-
-We have baked some baseline security checks into our toolchain, to be reflected
-in this section together with things to watch out for.
-
-### Our Security Toolchain
-
-- GitHub [Advisories](https://github.com/huntbase-io/steampipe-plugin-criminalip/security/advisories)
-- [Renovate](https://renovate.whitesourcesoftware.com/)
-- [StepSecurity](https://www.stepsecurity.io/)
-- [SocketDev](https://socket.dev/)
-
-### Our Security Checklist
-
-- [ ] You MUST encode, escape and validate any inputs
-- [ ] You MUST NOT commit secrets, passwords or keys
-- [ ] You SHOULD pin any new dependencies
-
-### Recommendations
-
-Prospective contributors are encouraged to familiarise themselves, if not already,
-with existing techniques and good practise.
-
-## Providing Feedback
-
-If you have suggestions on how this process could be improved please submit a
-pull request.
-
-## Versions
-
-All notable changes to this policy should be noted below. We use
-[SemVer](https://semver.org) for versioning, with the following intents:
-
-- We will increment the MAJOR version when we change contact information,
-  encryption keys, or a field in security.txt in a backwards-incompatible manner
-- We will increment the MINOR version when we otherwise change this file or the
-  security.txt in a backwards-compatible manner
-- We will increment the PATCH version for minor typos or similar
-
-### Version History
-
-- 1.0.0 (2024-04-03) - Initial policy and procedures
-
-## Attribution
-
-Thanks to [@trewaters](https://github.com/trewaters) for their thoughts on
-[structuring a SECURITY readme](https://github.com/Trewaters/security-README)
-together with the team behind [security.txt](https://securitytxt.org/)
-
-Based in part on the excellent material in the [standardjs security readme](https://github.com/standard/.github/blob/master/SECURITY.md)
-
-Licensed under [CC BY-SA 4.0 Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-
-[security]: mailto:security@huntbase.io
-[disclosure]: https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html#responsible-or-coordinated-disclosure
-[category]: https://owasp.org/www-project-top-ten/
+**Mind the credit budget.** Every page of search results costs API credits.
+`max_search_results` caps how many records a search fetches (100 by default);
+raise it only when you mean to.
