@@ -1,0 +1,16 @@
+# gitleaks configuration: the default ruleset plus narrow allowlists for
+# known false positives. Keep every entry specific to a path and a value
+# shape, and say why it is safe.
+[extend]
+useDefault = true
+
+[[allowlists]]
+# Recorded Criminal IP API responses include SSH service banners, which
+# carry the scanned server's *public* host key ("Key: AAAA...").
+# Public host keys are not secrets.
+description = "SSH public host keys in recorded Criminal IP banner fixtures"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''^testdata/fixtures/[^/]+\.json$''']
+regexTarget = "line"
+regexes = ['''\\nKey: AAAA[A-Za-z0-9+/]+={0,2}\\nAlgorithm: (ssh-|ecdsa-|rsa-)''']
