@@ -1,54 +1,60 @@
-# Contributing Guidelines
+# Contributing to steampipe-plugin-criminalip
 
-First off, thanks for taking the time to contribute!
+Thanks for your interest. Bug reports, new tables for Criminal IP endpoints,
+query examples and docs fixes are all welcome.
 
-We're conducting an experiment here by
-[working in the open](https://visitmy.website/2020/01/25/blogging-working-open/). We're finding
-out what works, and for that other perspectives matter.
+## Before you start
 
-## Our Code of Conduct
+- For a new table or anything bigger than a small fix, open an issue first so
+  we can agree on the approach.
+- Security issues: do not open a public issue; see [SECURITY.md](SECURITY.md).
+- This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
+- Never commit API keys or responses that identify your own infrastructure.
+  Test fixtures in `testdata/fixtures` should use public or documentation IP
+  addresses and domains.
 
-Our project and everyone participating in it are governed by our
-[Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to
-uphold this code. Please report unacceptable behavior to the project team at
-[abuse@huntbase.io][contact] or through the options to report an abusive
-[issue](https://docs.github.com/en/github/building-a-strong-community/reporting-abuse-or-spam#reporting-an-issue-or-pull-request)
-or
-[comment](https://docs.github.com/en/github/building-a-strong-community/reporting-abuse-or-spam#reporting-a-comment)
+## Development setup
 
-## Getting Started
+You need Go 1.26 or newer, [Steampipe](https://steampipe.io/downloads) and,
+for linting, [golangci-lint](https://golangci-lint.run/welcome/install/).
 
-Please [start a conversation](https://github.com/huntbase-io/steampipe-plugin-criminalip/discussions/new/choose) or
-[raise an issue](https://github.com/huntbase-io/steampipe-plugin-criminalip/issues/new/choose)
-about the feature or issue you've found; that provides us an opportunity
-to understand what you've spotted, where it challenges our approach and where
-it augments it.
+```bash
+git clone https://github.com/huntbase-io/steampipe-plugin-criminalip.git
+cd steampipe-plugin-criminalip
+make install      # builds into ~/.steampipe/plugins/local/criminalip/
+make test         # unit tests against recorded responses; no network calls
+```
 
-## Your Commits
+CI runs these checks on every pull request:
 
-We request that prospective contributors include themselves in our [Contributors](../CONTRIBUTORS.md)
-within their first pull request, to indicate they have read these guidelines and
-agree to uphold our [Code of Conduct](CODE_OF_CONDUCT.md).
+```bash
+go mod verify && go mod tidy -diff
+go build ./...
+go vet ./...
+go test -race -count=1 ./...
+golangci-lint run
+govulncheck ./...
+```
 
-We require that contributors:
+To try a change against the live API, configure `plugin = "local/criminalip"`
+and set `CRIMINALIP_API_KEY`, as described in the
+[README](../README.md#developing). `make sqlite` builds the SQLite extension.
 
-- [Sign off their commits](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-the-commit-signoff-policy-for-your-repository#about-commit-signoffs)
-- [Sign their commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
+## Pull requests
 
-You can read about the [difference between signing-off and signing](https://medium.com/@MarkEmeis/git-commit-signoff-vs-signing-9f37ee272b14)
+- Keep each PR focused, with tests for behaviour changes. Add recorded
+  responses under `testdata/fixtures` rather than calling the API from tests.
+- Make sure the CI checks above pass locally before pushing.
+- Add or update the table's page in `docs/tables/` and, for user-visible
+  changes, an entry in [CHANGELOG.md](../CHANGELOG.md).
+- By contributing you certify the
+  [Developer Certificate of Origin](DEVELOPER_CERTIFICATE_OF_ORIGIN). Signing
+  off your commits (`git commit -s`) is welcome but not required.
 
-## Our Conventions and Styleguides
+Releases are cut by the maintainers from `v*` tags; see
+[RELEASING.md](../RELEASING.md).
 
-We practise [scaled trunk-based developmet](https://trunkbaseddevelopment.com/) with
-[short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/)
-and [continuous integration](https://trunkbaseddevelopment.com/continuous-integration/)
-for everything being worked on by humans. Bots handle the heavy lifting in the
-subsequent pull requests.
+## Licence
 
-We use Linters and Golang's native formatters to maintain a consistent opinionated style.
-
-We use Code Scanners to help spot bugs, issues and vulnerabilities.
-
-We pin dependencies and then keep them evergreen automagically.
-
-[contact]: mailto:abuse@huntbase.io
+By contributing you agree that your contributions are licensed under the
+project's [Apache License 2.0](../LICENSE).
